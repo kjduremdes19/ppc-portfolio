@@ -1,0 +1,1391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amazon PPC Strategist & Automation Builder — Portfolio</title>
+  <meta name="description" content="Amazon PPC expert. I architect Sponsored Products, Brands and Display campaigns, then automate the bidding, harvesting and negative work so ACOS drops and stays down." />
+  <meta name="theme-color" content="#08090B" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #08090B;
+      --bg-2: #0B0D11;
+      --surface: #111318;
+      --surface-2: #161922;
+      --text: #E7E9EE;
+      --muted: #8A92A6;
+      --faint: #7C8499;
+      --accent: #6E79F0;
+      --accent-soft: #6E79F033;
+      --accent2: #34D6B0;
+      --brand: #2ECC71;   /* WorkwidKirk emerald */
+      --hair: rgba(255,255,255,.08);
+      --hair-strong: rgba(255,255,255,.14);
+
+      --fs-display: clamp(44px, 7vw, 104px);
+      --fs-h2: clamp(30px, 4vw, 52px);
+      --fs-h3: clamp(19px, 2vw, 24px);
+      --fs-body: 16px;
+      --fs-eyebrow: 11px;
+
+      --container: clamp(20px, 5vw, 88px);
+      --radius: 24px;
+      --radius-pill: 999px;
+
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+      --dur: .6s;
+
+      --shadow-card: 0 40px 120px -40px rgba(0,0,0,.7);
+      --shadow-soft: 0 24px 60px -28px rgba(0,0,0,.6);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Geist", system-ui, -apple-system, sans-serif;
+      font-size: var(--fs-body);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    /* Ambient glow orbs (Ethereal Glass) */
+    .ambient { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .55; }
+    .orb-1 { width: 620px; height: 620px; top: -200px; left: -120px;
+      background: radial-gradient(circle, rgba(110,121,240,.45), transparent 65%); }
+    .orb-2 { width: 520px; height: 520px; top: 38%; right: -180px;
+      background: radial-gradient(circle, rgba(52,214,176,.22), transparent 65%); }
+    .orb-3 { width: 480px; height: 480px; bottom: -160px; left: 30%;
+      background: radial-gradient(circle, rgba(110,121,240,.2), transparent 65%); }
+
+    /* Film grain */
+    .grain { position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    main { position: relative; z-index: 1; }
+
+    .wrap { max-width: 1240px; margin: 0 auto; padding-inline: var(--container); }
+
+    a { color: inherit; text-decoration: none; }
+
+    h1, h2, h3 { font-weight: 700; line-height: 1.05; letter-spacing: -.03em; text-wrap: balance; }
+    h2 { font-size: var(--fs-h2); }
+    h3 { font-size: var(--fs-h3); letter-spacing: -.02em; line-height: 1.2; }
+
+    .mono { font-family: "Geist Mono", monospace; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: "Geist Mono", monospace;
+      font-size: var(--fs-eyebrow); text-transform: uppercase;
+      letter-spacing: .22em; color: var(--accent);
+      padding: 6px 12px; border-radius: var(--radius-pill);
+      border: 1px solid var(--accent-soft); background: var(--accent-soft);
+    }
+    .eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+
+    .section { padding-block: clamp(80px, 12vw, 160px); position: relative; }
+    .section-head { max-width: 640px; margin-bottom: 56px; }
+    .section-head p { color: var(--muted); margin-top: 18px; font-size: 17px; }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
+      z-index: 50; width: min(1180px, calc(100% - 32px));
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 12px 10px 22px; border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,.1); background: rgba(16,19,26,.55);
+      backdrop-filter: blur(26px) saturate(1.5); -webkit-backdrop-filter: blur(26px) saturate(1.5);
+      box-shadow: 0 18px 48px -18px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.09);
+      transition: top .45s var(--ease), background .5s var(--ease), width .55s var(--ease), padding .55s var(--ease), border-color .5s var(--ease);
+    }
+    .nav.scrolled { top: 10px; background: rgba(16,19,26,.72); }
+    .nav__brand .wm { display: inline-block; overflow: hidden; white-space: nowrap; max-width: 200px; transition: opacity .45s var(--ease), max-width .5s var(--ease); }
+    .nav__logo { height: 0; width: auto; opacity: 0; transform: scale(.7); transition: opacity .45s var(--ease), transform .45s var(--ease), height .5s var(--ease); }
+    @media (min-width: 761px) {
+      .nav.scrolled { width: 112px; justify-content: center; padding: 6px 10px; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2); box-shadow: 0 16px 44px -18px rgba(0,0,0,.7); }
+      .nav.scrolled .nav__cta { display: none; }
+      .nav.scrolled .wm { opacity: 0; max-width: 0; }
+      .nav.scrolled .nav__brand { gap: 0; margin: 0 auto; }
+      .nav.scrolled .nav__logo { height: 56px; opacity: 1; transform: scale(1); }
+      /* radial "sun" menu — hover the logo, links fan around its lower half (light-green glow) */
+      .nav.scrolled { overflow: visible; }
+      .nav.scrolled::after { content: ""; position: absolute; left: 50%; top: 30%; width: 480px; height: 250px; transform: translateX(-50%); pointer-events: none; }
+      .nav.scrolled:hover::after { pointer-events: auto; }
+      .nav.scrolled:hover { border-color: rgba(46,204,113,.4); box-shadow: 0 16px 44px -18px rgba(0,0,0,.7), 0 0 30px -6px rgba(46,204,113,.45); }
+      .nav.scrolled .nav__links { display: block; position: absolute; left: 50%; top: 56%; width: 0; height: 0; pointer-events: none; z-index: 2; }
+      .nav.scrolled .nav__links a { position: absolute; left: 0; top: 0; transform: translate(-50%,-50%) scale(.4); opacity: 0; white-space: nowrap; padding: 7px 14px; border-radius: 999px; font-size: 13px; color: var(--text); background: rgba(16,19,26,.92); border: 1px solid rgba(46,204,113,.4); box-shadow: 0 0 18px -4px rgba(46,204,113,.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: transform .5s var(--ease), opacity .4s var(--ease), background .24s var(--ease), border-color .24s var(--ease); }
+      .nav.scrolled:hover .nav__links { pointer-events: auto; }
+      .nav.scrolled:hover .nav__links a { opacity: 1; pointer-events: auto; }
+      .nav.scrolled:hover .nav__links a:nth-child(1) { transform: translate(-50%,-50%) translate(-178px, 44px); transition-delay: .04s; }
+      .nav.scrolled:hover .nav__links a:nth-child(2) { transform: translate(-50%,-50%) translate(-104px, 104px); transition-delay: .08s; }
+      .nav.scrolled:hover .nav__links a:nth-child(3) { transform: translate(-50%,-50%) translate(0px, 130px); transition-delay: .12s; }
+      .nav.scrolled:hover .nav__links a:nth-child(4) { transform: translate(-50%,-50%) translate(104px, 104px); transition-delay: .16s; }
+      .nav.scrolled:hover .nav__links a:nth-child(5) { transform: translate(-50%,-50%) translate(178px, 44px); transition-delay: .20s; }
+      .nav.scrolled .nav__links a:hover { background: rgba(46,204,113,.18); border-color: var(--brand); }
+    }
+    .nav__brand { font-weight: 700; letter-spacing: -.02em; font-size: 20px; display: flex; align-items: center; gap: 9px; }
+    .nav__links { display: flex; gap: 6px; align-items: center; }
+    .nav__links a { color: var(--muted); font-size: 14.5px; padding: 8px 14px; border-radius: var(--radius-pill); transition: color .24s var(--ease), background .24s var(--ease); }
+    .nav__links a:hover { color: var(--text); background: rgba(255,255,255,.05); }
+    .nav__cta { display: inline-flex; }
+    .nav__burger { display: none; background: none; border: 0; color: var(--text); cursor: pointer; padding: 10px; }
+    .nav__burger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform .32s var(--ease), opacity .2s var(--ease); }
+    .nav__burger span + span { margin-top: 5px; }
+
+    /* Button-in-button */
+    .btn {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 12px;
+      font-weight: 600; font-size: 15px; padding: 12px 14px 12px 22px;
+      border-radius: var(--radius-pill); border: 1px solid transparent;
+      cursor: pointer; transition: transform .3s var(--ease), background .3s var(--ease), border-color .3s var(--ease);
+      will-change: transform;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn__ico { width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; transition: transform .3s var(--ease-spring); }
+    .btn:hover .btn__ico { transform: translate(3px, -3px); }
+    .sand-text { display: inline-block; }
+    .sand-canvas { position: absolute; pointer-events: none; }
+    .btn--primary { background: var(--accent); color: #0a0b14; }
+    .btn--primary:hover { background: #818bf5; }
+    .btn--primary .btn__ico { background: rgba(0,0,0,.18); }
+    .btn--ghost { background: rgba(255,255,255,.04); color: var(--text); border-color: var(--hair); padding: 12px 22px; }
+    .btn--ghost:hover { background: rgba(255,255,255,.08); }
+
+    /* ---------- Hero ---------- */
+    .hero { position: relative; padding-top: clamp(150px, 20vh, 230px); padding-bottom: clamp(70px, 10vw, 120px); }
+    .page-flow { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; border-radius: 50%; transform: translate(-50%, -50%); mix-blend-mode: difference; opacity: 0; will-change: transform; }
+    .cursor-dot { width: 7px; height: 7px; background: #fff; transition: opacity .3s var(--ease); }
+    .cursor-ring { width: 34px; height: 34px; border: 1.5px solid #fff; transition: opacity .3s var(--ease), width .28s var(--ease-spring), height .28s var(--ease-spring), border-color .28s var(--ease); }
+    .cursor-ring.is-hover { width: 58px; height: 58px; border-color: rgba(255,255,255,.6); }
+    html.has-cursor, html.has-cursor * { cursor: none !important; }
+    .hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+    .hero h1 { font-size: var(--fs-display); margin: 22px 0 26px; }
+    .hl { background: linear-gradient(100deg, var(--accent), #9aa2ff 40%, #fff 50%, #9aa2ff 60%, var(--accent)); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: hlsheen 4.5s ease-in-out infinite; }
+    @keyframes hlsheen { 0%, 100% { background-position: 0 0; } 50% { background-position: 100% 0; } }
+    .hero__copy > .reveal:nth-child(1) { transition-delay: .05s; }
+    .hero__copy > .reveal:nth-child(2) { transition-delay: .13s; }
+    .hero__copy > .reveal:nth-child(3) { transition-delay: .21s; }
+    .hero__copy > .reveal:nth-child(4) { transition-delay: .29s; }
+    .hero__copy > .reveal:nth-child(5) { transition-delay: .37s; }
+    .hero__visual { transition-delay: .22s; }
+    .hero__sub { color: var(--muted); font-size: clamp(16px, 1.6vw, 19px); max-width: 540px; }
+    .hero__cta { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+    @property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+    .hero__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 44px; }
+    .hero__stat { position: relative; padding: 20px 18px; border-radius: 18px; border: 1px solid var(--hair); background: linear-gradient(165deg, var(--surface-2), var(--surface)); overflow: hidden; cursor: default; transition: transform .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease); }
+    .hero__stat::before { content: ""; position: absolute; left: 0; top: 0; height: 2px; width: 0; background: var(--brand); box-shadow: 0 0 12px var(--brand); transition: width .55s var(--ease); }
+    .hero__stat::after { content: ""; position: absolute; inset: 0; background: radial-gradient(280px circle at 50% 0%, rgba(46,204,113,.16), transparent 70%); opacity: 0; transition: opacity .45s var(--ease); pointer-events: none; }
+    .hero__stat:hover { transform: translateY(-6px); border-color: rgba(46,204,113,.45); box-shadow: 0 26px 54px -26px rgba(46,204,113,.4); }
+    .hero__stat:hover::before { width: 100%; }
+    .hero__stat:hover::after { opacity: 1; }
+    .hero__stat .n { display: inline-block; font-family: "Geist Mono", monospace; font-size: clamp(26px, 3vw, 38px); font-weight: 500; letter-spacing: -.02em; transition: transform .45s var(--ease-spring); }
+    .hero__stat:hover .n { transform: scale(1.06); }
+    .hero__stat .n.up { color: var(--accent2); }
+    .hero__stat .l { color: var(--faint); font-size: 13px; margin-top: 6px; position: relative; z-index: 2; }
+    .hero__stat .n { position: relative; z-index: 2; }
+    .hero__stat .border-run { position: absolute; inset: 0; border-radius: 18px; padding: 1px; pointer-events: none; z-index: 1;
+      background: conic-gradient(from var(--ang), transparent 0deg 250deg, rgba(255,255,255,.5) 300deg, var(--brand) 332deg, transparent 360deg);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude;
+      animation: borderRun 5.5s linear infinite; opacity: .5; transition: opacity .4s var(--ease); }
+    .hero__stat:hover .border-run { opacity: 0; }
+    @keyframes borderRun { to { --ang: 360deg; } }
+
+    /* Hero visual card (double-bezel) */
+    .shell { padding: 7px; border-radius: calc(var(--radius) + 8px); border: 1px solid var(--hair); background: rgba(255,255,255,.03); box-shadow: var(--shadow-card); }
+    .core { border-radius: var(--radius); background: linear-gradient(160deg, var(--surface-2), var(--surface)); border: 1px solid var(--hair); box-shadow: inset 0 1px 0 rgba(255,255,255,.06); overflow: hidden; }
+    /* Hero dropzone — floating PPC signals → optimization hub */
+    .dropzone { position: relative; padding: 30px 26px 30px; text-align: center; background: radial-gradient(120% 80% at 50% 0%, rgba(110,121,240,.12), transparent 60%), var(--surface); border: 1.5px dashed var(--hair-strong); }
+    .dz__stage { position: relative; height: 176px; margin-bottom: 14px; }
+    .dz__lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .dz__lines path { fill: none; stroke: var(--hair-strong); stroke-width: 1.5; stroke-dasharray: 4 5; animation: flow 1.3s linear infinite; }
+    @keyframes flow { to { stroke-dashoffset: -18; } }
+    .dz__ic { position: absolute; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: var(--surface-2); background-image: linear-gradient(rgba(46,204,113,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(46,204,113,.14) 1px, transparent 1px); background-size: 9px 9px; border: 1px solid rgba(46,204,113,.26); box-shadow: 0 0 22px -10px rgba(46,204,113,.4), inset 0 0 10px rgba(46,204,113,.08); }
+    .dz__ic svg { width: 20px; height: 20px; stroke: var(--brand); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 4px rgba(46,204,113,.5)); }
+    .dz__ic.alt svg { stroke: var(--brand); }
+    .dz__ic .lbl { position: absolute; bottom: -17px; font-family: "Geist Mono", monospace; font-size: 9px; letter-spacing: .04em; color: var(--faint); white-space: nowrap; }
+    .dz__ic.p1 { left: 12%; top: 40%; animation: fl1 6s ease-in-out infinite; }
+    .dz__ic.p2 { left: 30%; top: 8%; animation: fl2 7s ease-in-out infinite; }
+    .dz__ic.p4 { right: 28%; top: 6%; animation: fl2 7.6s ease-in-out infinite .4s; }
+    .dz__ic.p5 { right: 10%; top: 42%; animation: fl1 6.8s ease-in-out infinite .2s; }
+    @keyframes fl1 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    @keyframes fl2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+    .dz__hub { position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%); width: 58px; height: 58px; border-radius: 16px; background: linear-gradient(135deg, var(--accent), #3a44c9); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 42px -10px var(--accent); animation: hubpulse 3.2s ease-in-out infinite; }
+    .dz__hub svg { width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    @keyframes hubpulse { 0%,100% { box-shadow: 0 0 42px -12px var(--accent); } 50% { box-shadow: 0 0 64px -6px var(--accent); } }
+    .dz__title { font-size: 19px; font-weight: 700; letter-spacing: -.02em; }
+    .dz__sub { color: var(--muted); font-size: 14px; margin-top: 6px; max-width: 300px; margin-inline: auto; }
+    .float-badge {
+      position: absolute; top: -18px; right: -14px; z-index: 3;
+      padding: 10px 16px; border-radius: 16px; background: var(--surface-2);
+      border: 1px solid var(--hair-strong); box-shadow: var(--shadow-soft);
+      animation: float 6s ease-in-out infinite;
+    }
+    .float-badge .mono { color: var(--accent2); font-size: 15px; font-weight: 500; }
+    .float-badge .l { color: var(--faint); font-size: 11px; }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-10px) rotate(-2deg); } }
+
+    /* ---------- Marquee ---------- */
+    .marquee { border-block: 1px solid var(--hair); padding-block: 22px; overflow: hidden; background: rgba(255,255,255,.015); }
+    .marquee__track { display: flex; align-items: center; gap: 26px; width: max-content; animation: scroll 42s linear infinite; }
+    .marquee:hover .marquee__track { animation-play-state: paused; }
+    .m-item { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; font-family: "Space Grotesk", sans-serif; font-weight: 500; font-size: 15px; letter-spacing: .02em; }
+    .m-item:nth-child(4n+1) { color: var(--brand); }
+    .m-item:nth-child(4n+3) { color: var(--accent); }
+    .m-ic { width: 17px; height: 17px; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; opacity: .9; }
+    .m-sep { color: var(--muted); opacity: .4; font-size: 9px; }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    /* ---------- Method ---------- */
+    /* Method = interactive command palette (Resend-style tile selector + panel) */
+    .method-tabs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 18px; }
+    .mtab { display: flex; flex-direction: column; align-items: center; gap: 11px; padding: 20px 10px; border-radius: 16px; border: 1px solid var(--hair); background: var(--surface); cursor: pointer; transition: border-color .3s var(--ease), background .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease); }
+    .mtab:hover { border-color: var(--hair-strong); transform: translateY(-2px); }
+    .mtab .mt-ic { width: 24px; height: 24px; stroke: var(--muted); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s var(--ease); }
+    .mtab .mlabel { font-family: "Geist Mono", monospace; font-size: 12.5px; color: var(--muted); transition: color .3s var(--ease); }
+    .mtab.active { border-color: rgba(46,204,113,.38); background: var(--surface-2); background-image: linear-gradient(rgba(46,204,113,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(46,204,113,.06) 1px, transparent 1px); background-size: 13px 13px; box-shadow: 0 0 30px -18px rgba(46,204,113,.4); }
+    .mtab.active .mt-ic { stroke: var(--brand); filter: drop-shadow(0 0 5px rgba(46,204,113,.5)); }
+    .mtab.active .mlabel { color: var(--text); }
+    .method-panel { border-radius: var(--radius); border: 1px solid var(--hair); background: var(--surface); overflow: hidden; }
+    .mp-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; border-bottom: 1px solid var(--hair); background: var(--surface-2); }
+    .mp-cmd { font-family: "Geist Mono", monospace; font-size: 13px; color: var(--muted); }
+    .mp-copy { font-family: "Geist Mono", monospace; font-size: 12px; color: var(--muted); background: rgba(255,255,255,.04); border: 1px solid var(--hair); padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: color .24s var(--ease), border-color .24s var(--ease); }
+    .mp-copy:hover { color: var(--text); border-color: var(--hair-strong); }
+    .mp-body { padding: 30px 26px; min-height: 150px; }
+    .mp-tag { display: inline-block; font-family: "Geist Mono", monospace; font-size: 11px; color: var(--faint); border: 1px solid var(--hair); padding: 5px 11px; border-radius: var(--radius-pill); margin-bottom: 14px; }
+    .mp-body h3 { margin-bottom: 10px; }
+    .mp-body p { color: var(--muted); max-width: 640px; }
+    .mp-body.swap { animation: mpswap .4s var(--ease); }
+    @keyframes mpswap { from { opacity: 0; transform: translateY(8px); } }
+
+    /* ---------- Capabilities slider (fanned coverflow) ---------- */
+    .cap-slider { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .cap-stage { position: relative; flex: 1; height: clamp(320px, 40vw, 360px); perspective: 1600px; }
+    .cap-card { position: absolute; left: 50%; top: 50%; width: min(440px, 82%); padding: 32px 30px; border-radius: var(--radius); border: 1px solid var(--hair); background: linear-gradient(165deg, var(--surface-2), var(--surface)); box-shadow: var(--shadow-soft); transform: translate(-50%, -50%); transform-style: preserve-3d; transition: transform .55s var(--ease), opacity .55s var(--ease), border-color .4s var(--ease), box-shadow .4s var(--ease); cursor: pointer; will-change: transform, opacity; }
+    .cap-card.is-active { border-color: rgba(46,204,113,.45); box-shadow: 0 34px 90px -34px rgba(46,204,113,.4), var(--shadow-card); cursor: default; }
+    .cap-ico { width: 50px; height: 50px; border-radius: 13px; background: rgba(46,204,113,.08); background-image: linear-gradient(rgba(46,204,113,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(46,204,113,.16) 1px, transparent 1px); background-size: 9px 9px; border: 1px solid rgba(46,204,113,.26); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; box-shadow: 0 0 20px -10px rgba(46,204,113,.38); }
+    .cap-ico svg { width: 24px; height: 24px; stroke: var(--brand); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 5px rgba(46,204,113,.5)); }
+    .cap-card h3 { margin-bottom: 16px; }
+    .cap-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .cap-list li { position: relative; padding-left: 26px; color: var(--muted); font-size: 14.5px; line-height: 1.45; }
+    .cap-list li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--brand); font-weight: 700; }
+    .cap-nav { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--hair-strong); background: rgba(255,255,255,.04); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); color: var(--text); font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: .3; transition: background .24s var(--ease), border-color .24s var(--ease), transform .24s var(--ease), opacity .3s var(--ease); z-index: 6; }
+    .cap-slider:hover .cap-nav { opacity: .6; }
+    .cap-nav:hover { opacity: 1; background: rgba(255,255,255,.08); border-color: var(--accent); }
+    .cap-nav:active { transform: scale(.94); }
+
+    /* ---------- Results ---------- */
+    .results { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .result { padding: 22px; border-radius: var(--radius); border: 1px solid var(--hair); background: var(--surface); transition: transform .5s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease); transform-style: preserve-3d; will-change: transform; }
+    .result:hover { border-color: var(--hair-strong); box-shadow: var(--shadow-card); }
+    .result__cat { font-family: "Geist Mono", monospace; font-size: 12px; color: var(--faint); letter-spacing: .1em; text-transform: uppercase; }
+    .result__metric { font-family: "Geist Mono", monospace; font-size: clamp(28px, 3.2vw, 38px); font-weight: 500; letter-spacing: -.03em; margin: 10px 0 4px; }
+    .result__metric .arrow { color: var(--accent2); }
+    .result__label { color: var(--text); font-weight: 600; margin-top: 12px; }
+    .result p { color: var(--muted); font-size: 14px; margin-top: 6px; }
+    .result__row { display: flex; gap: 22px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--hair); }
+    .result__row div .mono { font-size: 16px; color: var(--text); }
+    .result__row div .l { font-size: 11px; color: var(--faint); }
+
+    /* ---------- Toolkit / pipeline ---------- */
+    .pipe { position: relative; display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .pipe__flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 14px; align-items: stretch; }
+    .node { position: relative; padding: 22px; border-radius: 18px; border: 1px solid var(--hair); background: var(--surface); text-align: center; transition: background .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease), opacity .45s var(--ease), filter .45s var(--ease); }
+    .node:not(.is-live) { filter: grayscale(1) brightness(.82); opacity: .5; }
+    .node--engine:not(.is-live) { box-shadow: none; }
+    @property --ta { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+    .node__trace { position: absolute; inset: 0; border-radius: 18px; padding: 1px; pointer-events: none; z-index: 3; opacity: 0; --tracecol: #ffffff;
+      background: conic-gradient(from var(--ta), #ffffff 0deg, var(--tracecol) 12deg, transparent 46deg, transparent 360deg);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude;
+      filter: drop-shadow(0 0 4px var(--tracecol)) drop-shadow(0 0 11px var(--tracecol)) drop-shadow(0 0 20px var(--tracecol)); transition: opacity .2s ease; }
+    .node--engine .node__trace { --tracecol: var(--brand); }
+    .pipe-ball { position: absolute; top: 0; left: 0; width: 26px; height: 26px; border-radius: 50%; z-index: 5; pointer-events: none; will-change: transform; filter: blur(3px); transition: opacity .35s ease;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,.5), rgba(110,121,240,.32) 45%, rgba(110,121,240,0) 75%); box-shadow: 0 0 22px 6px rgba(110,121,240,.22); }
+    .node .mono { color: var(--faint); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    .node h3 { font-size: 17px; margin-top: 8px; }
+    .node--engine { background: linear-gradient(165deg, var(--accent), #3a44c9); color: #0a0b14; border-color: transparent; box-shadow: 0 0 50px -16px var(--accent); }
+    .node--engine .mono { color: rgba(0,0,0,.55); }
+    .node--engine p { font-size: 13px; color: rgba(10,11,20,.75); margin-top: 6px; }
+    .node__viz { height: 54px; margin-bottom: 14px; border-radius: 10px; border: 1px solid var(--hair); background: rgba(255,255,255,.025); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .node--engine .node__viz { border-color: rgba(0,0,0,.25); background: rgba(0,0,0,.14); }
+    .viz-input { flex-direction: column; gap: 6px; padding: 0 16px; align-items: stretch; }
+    .viz-input i { height: 7px; border-radius: 3px; background: linear-gradient(90deg, var(--accent), rgba(110,121,240,.15)); transform-origin: left; animation: vfill 2.6s var(--ease) infinite; }
+    .viz-input i:nth-child(2) { animation-delay: .35s; }
+    .viz-input i:nth-child(3) { animation-delay: .7s; }
+    @keyframes vfill { 0%,100% { transform: scaleX(.15); opacity: .35; } 50% { transform: scaleX(1); opacity: 1; } }
+    .viz-engine { gap: 9px; }
+    .viz-engine i { width: 9px; height: 9px; border-radius: 50%; background: rgba(10,11,20,.9); animation: vbob 1.5s var(--ease) infinite; }
+    .viz-engine i:nth-child(2) { animation-delay: .18s; }
+    .viz-engine i:nth-child(3) { animation-delay: .36s; }
+    .viz-engine i:nth-child(4) { animation-delay: .54s; }
+    @keyframes vbob { 0%,100% { transform: scale(.7); opacity: .45; } 50% { transform: scale(1.25); opacity: 1; } }
+    .viz-output { flex-direction: column; gap: 5px; padding: 0 16px; align-items: stretch; }
+    .viz-output i { height: 6px; border-radius: 2px; background: var(--accent2); opacity: .25; animation: vbuild 2.8s var(--ease) infinite; }
+    .viz-output i:nth-child(2) { animation-delay: .3s; }
+    .viz-output i:nth-child(3) { animation-delay: .6s; }
+    .viz-output i:nth-child(4) { animation-delay: .9s; }
+    @keyframes vbuild { 0%,100% { opacity: .2; transform: translateX(-8px); } 45%,65% { opacity: .9; transform: none; } }
+    .viz-input i, .viz-engine i, .viz-output i { animation-play-state: paused; }
+    .node.is-live .viz-input i, .node.is-live .viz-engine i, .node.is-live .viz-output i { animation-play-state: running; }
+    .arrowline { display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 20px; }
+    .arrowline span { animation: pulse 2.4s var(--ease) infinite; }
+    @keyframes pulse { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+    /* ---------- Pinned horizontal tool rail ---------- */
+    .rail { position: relative; height: 520vh; }
+    .rail__sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+    .rail__head { display: flex; align-items: center; justify-content: space-between; padding: 0 6vw; }
+    .rail__head .mono { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--faint); }
+    .rail__dots { display: flex; gap: 9px; }
+    .rail__dots b { width: 8px; height: 8px; border-radius: 50%; background: var(--hair-strong); transition: background .3s var(--ease), transform .3s var(--ease); }
+    .rail__dots b.on { background: var(--accent); transform: scale(1.35); }
+    .rail__track { position: relative; flex: 1; width: 100%; }
+    .tslide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 0 5vw; opacity: 0; will-change: transform, opacity; pointer-events: none; }
+    .tslide.on { pointer-events: auto; }
+    .tpanel { width: 100%; max-width: 1040px; height: 62vh; display: grid; grid-template-columns: 1fr 1.15fr; gap: 40px; align-items: center; border-radius: var(--radius); border: 1px solid var(--hair); background: linear-gradient(165deg, var(--surface-2), var(--surface)); box-shadow: var(--shadow-card); padding: clamp(28px, 4vw, 52px); }
+    .tpanel__num { font-family: "Geist Mono", monospace; font-size: 12px; color: var(--accent); letter-spacing: .12em; }
+    .tpanel__text h3 { font-size: clamp(24px, 2.8vw, 38px); margin: 12px 0 14px; letter-spacing: -.02em; line-height: 1.1; }
+    .tpanel__text p { color: var(--muted); font-size: clamp(15px, 1.4vw, 17px); max-width: 430px; }
+    .tpanel__stat { margin-top: 22px; font-family: "Geist Mono", monospace; font-size: 13px; color: var(--accent2); border: 1px solid rgba(46,204,113,.3); border-radius: 999px; padding: 6px 14px; display: inline-block; }
+    .tpanel__viz { height: 100%; min-height: 200px; border-radius: 16px; border: 1px solid var(--hair); position: relative; overflow: hidden; background: var(--bg-2); background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 22px 22px; display: flex; align-items: center; justify-content: center; }
+    .tpanel__shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; border-radius: 16px; z-index: 2; display: block; box-shadow: inset 0 0 0 1px var(--hair), inset 0 -55px 60px -30px rgba(0,0,0,.72); }
+    /* viz: Bid Optimizer — bars tuning to a target line */
+    .viz-bid { gap: 12px; align-items: flex-end; padding-bottom: 30px; }
+    .viz-bid .target { position: absolute; left: 22px; right: 22px; top: 44%; border-top: 1px dashed rgba(46,204,113,.6); }
+    .viz-bid i { width: 17px; height: 78%; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, var(--accent), #3a44c9); transform-origin: bottom; transform: scaleY(.35); animation: bidbar 2.4s var(--ease) infinite; }
+    .viz-bid i:nth-child(odd) { background: linear-gradient(180deg, var(--accent2), #1f9e7f); }
+    .viz-bid i:nth-child(3){animation-delay:.2s} .viz-bid i:nth-child(4){animation-delay:.4s} .viz-bid i:nth-child(5){animation-delay:.6s} .viz-bid i:nth-child(6){animation-delay:.8s} .viz-bid i:nth-child(7){animation-delay:1s}
+    @keyframes bidbar { 0%,100% { transform: scaleY(.35); } 50% { transform: scaleY(1); } }
+    /* viz: Search-Term Cleanup — rows negated (red) / harvested (green) */
+    .viz-clean { flex-direction: column; gap: 13px; padding: 0 34px; align-items: stretch; }
+    .viz-clean i { height: 13px; border-radius: 4px; background: rgba(255,255,255,.07); position: relative; overflow: hidden; }
+    .viz-clean i::after { content: ""; position: absolute; inset: 0; border-radius: 4px; transform-origin: left; transform: scaleX(0); }
+    .viz-clean i:nth-child(2n)::after { background: rgba(46,204,113,.55); animation: harv 3.2s var(--ease) infinite; }
+    .viz-clean i:nth-child(2n+1)::after { background: rgba(231,76,60,.5); animation: harv 3.2s var(--ease) infinite; }
+    .viz-clean i:nth-child(2){animation:none} .viz-clean i:nth-child(2)::after{animation-delay:.3s} .viz-clean i:nth-child(3)::after{animation-delay:.6s} .viz-clean i:nth-child(4)::after{animation-delay:.9s} .viz-clean i:nth-child(5)::after{animation-delay:1.2s}
+    @keyframes harv { 0%,100% { transform: scaleX(0); } 40%,75% { transform: scaleX(1); } }
+    /* viz: Keyword Relevancy Checker — rows scored pass/fail */
+    .viz-rel { flex-direction: column; gap: 12px; padding: 0 40px; align-items: stretch; }
+    .viz-rel i { height: 13px; border-radius: 4px; background: rgba(255,255,255,.07); position: relative; }
+    .viz-rel i::before { content: "\2713"; position: absolute; right: 4px; top: -4px; font-size: 14px; color: var(--accent2); opacity: 0; animation: rel 2.8s var(--ease) infinite; }
+    .viz-rel i:nth-child(3)::before, .viz-rel i:nth-child(4)::before { content: "\2715"; color: var(--faint); }
+    .viz-rel i:nth-child(2)::before{animation-delay:.25s} .viz-rel i:nth-child(3)::before{animation-delay:.5s} .viz-rel i:nth-child(4)::before{animation-delay:.75s} .viz-rel i:nth-child(5)::before{animation-delay:1s}
+    @keyframes rel { 0%,100% { opacity: 0; } 45%,80% { opacity: 1; } }
+    /* viz: Catalog & PDP Grabber — product grid scanned */
+    .viz-grab .grid { display: grid; grid-template-columns: repeat(3, 34px); gap: 12px; }
+    .viz-grab .grid b { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--hair); background: rgba(255,255,255,.04); animation: gcell 3s var(--ease) infinite; }
+    .viz-grab .grid b:nth-child(2n){animation-delay:.3s} .viz-grab .grid b:nth-child(3n){animation-delay:.6s}
+    .viz-grab .scan { position: absolute; top: 0; bottom: 0; width: 44px; left: -44px; background: linear-gradient(90deg, transparent, rgba(110,121,240,.45), transparent); animation: gscan 3s linear infinite; }
+    @keyframes gscan { to { left: 100%; } }
+    @keyframes gcell { 0%,100% { border-color: var(--hair); } 50% { border-color: var(--accent); } }
+    /* viz: Campaign Bulk Builder — spreadsheet rows building */
+    .viz-build { flex-direction: column; gap: 9px; padding: 0 36px; align-items: stretch; }
+    .viz-build i { height: 13px; border-radius: 3px; background: linear-gradient(90deg, var(--accent2), rgba(52,214,176,.1)); transform-origin: left; transform: scaleX(0); animation: buildrow 3.4s var(--ease) infinite; }
+    .viz-build i:nth-child(2){animation-delay:.25s} .viz-build i:nth-child(3){animation-delay:.5s} .viz-build i:nth-child(4){animation-delay:.75s} .viz-build i:nth-child(5){animation-delay:1s} .viz-build i:nth-child(6){animation-delay:1.25s}
+    @keyframes buildrow { 0% { transform: scaleX(0); } 28%,100% { transform: scaleX(1); } }
+    /* mobile fallback — no pin, vertical stack */
+    @media (max-width: 860px) {
+      .rail { height: auto; }
+      .rail__sticky { position: static; height: auto; overflow: visible; display: block; }
+      .rail__head { display: none; }
+      .rail__track { display: flex; flex-direction: column; transform: none !important; padding: 0 20px; gap: 16px; }
+      .tslide { position: static; inset: auto; opacity: 1 !important; transform: none !important; pointer-events: auto; flex: 1 1 auto; width: 100%; padding: 0; display: block; }
+      .tpanel { width: 100%; max-width: none; height: auto; grid-template-columns: 1fr; gap: 24px; }
+      .tpanel__viz { min-height: 200px; }
+      #crail { height: auto; }
+      .cpanel { height: auto; max-width: none; }
+      .cpanel img { height: auto; }
+      .cpanel--noimg { height: 240px; }
+    }
+
+    /* ---------- Stack (tools used — moving marquee) ---------- */
+    .stack-marquee { position: relative; overflow: hidden; width: 100vw; margin-inline: calc(50% - 50vw);
+      border-block: 1px solid var(--hair); background: rgba(255,255,255,.02); padding-block: 26px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+    .stack-track { display: flex; align-items: center; width: max-content; animation: scroll 32s linear infinite; }
+    .stack-item { display: inline-flex; align-items: center; gap: 13px; padding: 0 36px; white-space: nowrap; }
+    .stack-ico { width: 34px; height: 34px; border-radius: 9px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px -8px rgba(0,0,0,.7); flex-shrink: 0; }
+    .stack-ico img { width: 100%; height: 100%; object-fit: contain; filter: grayscale(1); opacity: .72; transition: filter .3s var(--ease), opacity .3s var(--ease); }
+    .stack-item:hover .stack-ico img { filter: none; opacity: 1; }
+    .stack-mono { font-family: "Geist Mono", monospace; font-weight: 600; font-size: 18px; color: #0a0b14; }
+    .stack-name { font-family: "Geist Mono", monospace; font-size: 15px; font-weight: 500; color: var(--text); letter-spacing: -.01em; }
+    .stack-div { width: 1px; height: 26px; background: var(--hair-strong); flex-shrink: 0; }
+
+    /* ---------- Trainings ---------- */
+    .cat-logo { position: relative; z-index: 2; width: clamp(132px, 17vw, 176px); height: clamp(84px, 11vw, 108px); border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 20px; background: #f4f4f7; border: 1px solid rgba(255,255,255,.5); box-shadow: 0 14px 34px -16px rgba(0,0,0,.7), inset 0 1px 1px rgba(255,255,255,.6); }
+    .cat-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .cat-fallback { font-family: "Geist Mono", monospace; font-weight: 700; font-size: clamp(24px, 3vw, 32px); color: #0a0b14; letter-spacing: .04em; }
+    /* categories handled — lué-style gallery */
+    .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 30px; }
+    .cat-card { --glow: rgba(46,204,113,.42); display: block; }
+    .cat-card:nth-child(3n+2) { --glow: rgba(110,121,240,.5); }
+    .cat-thumb { position: relative; aspect-ratio: 4 / 3.3; border-radius: 18px; overflow: hidden; border: 1px solid var(--hair); background: linear-gradient(160deg, var(--surface-2), var(--bg-2)); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-soft); transition: transform .55s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease); }
+    .cat-thumb::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 28px 28px; }
+    .cat-thumb::after { content: ""; position: absolute; width: 62%; height: 72%; border-radius: 50%; background: radial-gradient(circle, var(--glow), transparent 70%); filter: blur(26px); opacity: .55; transition: opacity .45s var(--ease); }
+    .cat-card:hover .cat-thumb { transform: translateY(-5px); border-color: var(--accent-soft); box-shadow: 0 32px 72px -36px rgba(0,0,0,.75); }
+    .cat-card:hover .cat-thumb::after { opacity: .85; }
+    .cat-idx { position: relative; z-index: 2; width: clamp(74px, 9vw, 96px); height: clamp(74px, 9vw, 96px); border-radius: 22px; display: flex; align-items: center; justify-content: center; font-family: "Geist Mono", monospace; font-weight: 600; font-size: clamp(24px, 2.8vw, 32px); color: var(--text); background: rgba(255,255,255,.045); border: 1px solid var(--hair-strong); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: inset 0 1px 1px rgba(255,255,255,.09); letter-spacing: .02em; }
+    .cat-meta { padding: 16px 4px 0; }
+    .cat-name { font-size: 17px; font-weight: 600; letter-spacing: -.01em; }
+    .cat-tags { margin-top: 5px; font-family: "Geist Mono", monospace; font-size: 12.5px; color: var(--muted); letter-spacing: .02em; }
+    /* Categories — pinned full-width showcase (one image per category, like the Toolkit rail) */
+    #crail { height: 720vh; }
+    .cpanel { position: relative; width: 100%; max-width: 1180px; height: 70vh; max-height: 760px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--hair); box-shadow: var(--shadow-card); background: linear-gradient(165deg, var(--surface-2), var(--surface)); }
+    .cpanel img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.08); transition: transform .25s ease-out; will-change: transform; }
+    .cpanel__cap { position: absolute; inset: auto 0 0 0; padding: clamp(24px, 4vw, 48px); background: linear-gradient(to top, rgba(4,5,8,.92), rgba(4,5,8,.45) 55%, transparent); transition: transform .25s ease-out; }
+    .cpanel__num { font-family: "Geist Mono", monospace; font-size: 13px; letter-spacing: .12em; color: var(--accent); }
+    .cpanel__cap h3 { font-size: clamp(26px, 3.4vw, 44px); margin: 8px 0 8px; letter-spacing: -.02em; line-height: 1.05; }
+    .cpanel__tags { font-family: "Geist Mono", monospace; font-size: 13px; color: var(--accent2); }
+    .cpanel--noimg { display: flex; align-items: center; justify-content: center; background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 26px 26px; }
+    .cpanel--noimg .cidx { font-family: "Geist Mono", monospace; font-size: clamp(48px, 8vw, 90px); font-weight: 600; color: var(--faint); }
+
+    /* ---------- Contact ---------- */
+    .contact { text-align: center; }
+    .contact .core { padding: clamp(40px, 7vw, 80px); text-align: center; }
+    .contact h2 { margin-bottom: 18px; }
+    .contact p { color: var(--muted); max-width: 480px; margin: 0 auto 32px; font-size: 17px; }
+    .contact .hero__cta { justify-content: center; }
+
+    footer { border-top: 1px solid var(--hair); padding-block: 40px; }
+    footer .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    footer .muted { color: var(--faint); font-size: 14px; }
+    footer .flinks { display: flex; gap: 22px; }
+    footer .flinks a { color: var(--muted); font-size: 14px; transition: color .24s var(--ease); }
+    footer .flinks a:hover { color: var(--text); }
+
+    /* ---------- Reveal ---------- */
+    .reveal { opacity: 0; transform: translateY(28px); filter: blur(6px); transition: opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; filter: none; }
+    .reveal-right { opacity: 0; transform: translateX(110px); filter: blur(6px); transition: opacity 1.4s var(--ease), transform 1.4s var(--ease), filter 1.4s var(--ease); }
+    .reveal-right.in { opacity: 1; transform: none; filter: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .hero__grid { grid-template-columns: 1fr; }
+      .hero__visual { order: -1; max-width: 460px; }
+      .results, .tools { grid-template-columns: 1fr 1fr; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .pipe__flow { grid-template-columns: 1fr; }
+      .arrowline { transform: rotate(90deg); padding: 4px 0; }
+    }
+    @media (max-width: 760px) {
+      .nav__links, .nav__cta { display: none; }
+      .nav__burger { display: block; }
+      .nav.open .nav__links { display: flex; position: absolute; top: calc(100% + 12px); left: 0; right: 0; flex-direction: column; padding: 14px; background: rgba(12,14,19,.94); backdrop-filter: blur(16px); border: 1px solid var(--hair); border-radius: 22px; }
+      .nav__links a { padding: 12px 16px; }
+      .nav.open .nav__burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .nav.open .nav__burger span:nth-child(2) { opacity: 0; }
+      .nav.open .nav__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      .method-tabs { grid-template-columns: repeat(3, 1fr); }
+      .results, .tools { grid-template-columns: 1fr; }
+      .cat-grid { grid-template-columns: 1fr; }
+      .cap-stage { height: 400px; }
+      .hero__stats { gap: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal, .reveal-right { opacity: 1; transform: none; filter: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ---------- Login gate (Amazon-flavored intro) ---------- */
+    #login-gate { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
+      background: var(--bg); padding: 24px; opacity: 1; transition: opacity .7s var(--ease); }
+    #login-gate.hide { opacity: 0; pointer-events: none; }
+    .lg__bg { position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(680px circle at 50% -8%, rgba(110,121,240,.18), transparent 60%), radial-gradient(560px circle at 50% 118%, rgba(52,214,176,.10), transparent 60%); }
+    .lg__card { position: relative; width: min(384px, 100%); display: flex; flex-direction: column; align-items: center; }
+    .lg__brand { display: flex; flex-direction: column; align-items: center; margin-bottom: 22px; }
+    .lg__word { font-weight: 700; font-size: 42px; letter-spacing: -.045em; color: #fff; line-height: 1; }
+    .lg__smile { width: 120px; height: 22px; margin-top: 1px; }
+    .lg__form { width: 100%; background: var(--surface); border: 1px solid var(--hair); border-radius: 16px; padding: 26px 26px 28px; box-shadow: var(--shadow-card); }
+    .lg__title { font-size: 26px; font-weight: 600; letter-spacing: -.02em; margin-bottom: 20px; }
+    .lg__btn { width: 100%; padding: 12px; border: 0; border-radius: 9px; cursor: pointer;
+      background: linear-gradient(180deg, #FFD814, #F5C200); color: #0a0b14; font-family: inherit; font-weight: 600; font-size: 15px;
+      transition: transform .2s var(--ease), filter .2s var(--ease); }
+    .lg__btn:hover { filter: brightness(1.06); }
+    .lg__btn:active { transform: scale(.985); }
+    .lg__fine { font-size: 11.5px; color: var(--faint); margin-top: 16px; line-height: 1.5; }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div id="login-gate" role="dialog" aria-modal="true" aria-label="Sign in to continue">
+    <div class="lg__bg" aria-hidden="true"></div>
+    <div class="lg__card">
+      <div class="lg__brand">
+        <span class="lg__word">amazon</span>
+        <svg class="lg__smile" viewBox="0 0 120 22" fill="none" aria-hidden="true">
+          <path d="M6 7 C 38 24, 82 24, 112 6" stroke="#FF9900" stroke-width="3.6" stroke-linecap="round"/>
+          <path d="M112 6 l -2.5 9 M112 6 l -10 1.5" stroke="#FF9900" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <form class="lg__form" id="lgForm" novalidate>
+        <h1 class="lg__title">Sign In as guest</h1>
+        <button class="lg__btn" type="submit">Login</button>
+        <p class="lg__fine">Guest access — click Login to enter Kirk's Amazon PPC portfolio.</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="ambient" aria-hidden="true">
+    <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+  <canvas class="page-flow" aria-hidden="true"></canvas>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="ic-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></symbol>
+      <symbol id="ic-brand" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></symbol>
+      <symbol id="ic-display" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16v4"/></symbol>
+      <symbol id="ic-bulk" viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+      <symbol id="ic-bid" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 8h4v4"/></symbol>
+      <symbol id="ic-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M21 21l-4-4"/></symbol>
+      <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+      <symbol id="ic-audience" viewBox="0 0 24 24"><circle cx="8.5" cy="9" r="3"/><circle cx="16" cy="9.5" r="2.4"/><path d="M2.5 19a6 6 0 0 1 12 0"/><path d="M14.5 14.5A5 5 0 0 1 21.5 19"/></symbol>
+      <symbol id="ic-negative" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8 12h8"/></symbol>
+      <symbol id="ic-tacos" viewBox="0 0 24 24"><path d="M5 20V11M10 20V5M15 20v-6M20 20h-17"/></symbol>
+      <symbol id="ic-catalog" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+      <symbol id="ic-dsp" viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="12" r="1.3"/></symbol>
+      <symbol id="ic-cap" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.4 2.7 2.6 6 2.6s6-1.2 6-2.6v-5"/><path d="M22 9v5.5"/></symbol>
+    </defs>
+  </svg>
+
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a class="nav__brand" href="#top"><span class="wm">Workwid<span style="color:var(--brand)">Kirk</span></span><img class="nav__logo" src="workwidkirk-logo.png" alt="WorkwidKirk" /></a>
+    <div class="nav__links">
+      <a href="#method">Method</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#results">Results</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#stack">Tools</a>
+    </div>
+    <a class="btn btn--primary nav__cta" href="#contact"><span class="sand-text">Get in touch</span> <span class="btn__ico">↗</span></a>
+    <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main id="top">
+    <!-- HERO -->
+    <header class="section hero wrap">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow reveal">Amazon Advertising · PPC Expert</span>
+          <h1 class="reveal">Your ad spend deserves <span class="hl">better</span>.</h1>
+          <p class="hero__sub reveal">Most Amazon ad accounts waste spend in places nobody's watching. I rebuild them into clean, rule-driven systems — then automate the bidding, harvesting, and negatives so ACOS keeps falling while sales climb.</p>
+          <div class="hero__cta reveal">
+            <a class="btn btn--primary" href="#results"><span class="sand-text">See the results</span> <span class="btn__ico">↗</span></a>
+            <a class="btn btn--ghost" href="#method"><span class="sand-text">How I work</span></a>
+          </div>
+          <div class="hero__stats reveal">
+            <div class="hero__stat"><span class="border-run" aria-hidden="true"></span><div class="n up" data-to="34" data-prefix="−" data-suffix="%">−34%</div><div class="l">avg. ACOS reduction</div></div>
+            <div class="hero__stat"><span class="border-run" aria-hidden="true"></span><div class="n" data-to="2.4" data-dec="1" data-prefix="$" data-suffix="M">$2.4M</div><div class="l">ad spend managed</div></div>
+            <div class="hero__stat"><span class="border-run" aria-hidden="true"></span><div class="n" data-to="7">7</div><div class="l">in-house automations built</div></div>
+          </div>
+        </div>
+        <div class="hero__visual reveal">
+          <div class="shell" style="position:relative">
+            <div class="float-badge"><div class="mono">ACOS ↓ 34%</div><div class="l">last 90 days</div></div>
+            <div class="core dropzone">
+              <div class="dz__stage">
+                <svg class="dz__lines" viewBox="0 0 320 176" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M52 84 C 110 110, 130 120, 160 132"/>
+                  <path d="M108 36 C 130 90, 145 110, 160 132"/>
+                  <path d="M212 32 C 195 88, 178 110, 160 132"/>
+                  <path d="M270 86 C 215 112, 188 122, 160 132"/>
+                </svg>
+                <span class="dz__ic p1"><svg><use href="#ic-search"/></svg><span class="lbl">search terms</span></span>
+                <span class="dz__ic p2 alt"><svg><use href="#ic-bid"/></svg><span class="lbl">bids</span></span>
+                <span class="dz__ic p4"><svg><use href="#ic-audience"/></svg><span class="lbl">audiences</span></span>
+                <span class="dz__ic p5 alt"><svg><use href="#ic-negative"/></svg><span class="lbl">negatives</span></span>
+                <span class="dz__hub"><svg><use href="#ic-target"/></svg></span>
+              </div>
+              <div class="dz__title">Signals in, profit out.</div>
+              <div class="dz__sub">Search terms, bids and clicks — optimized into campaigns that convert.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span class="m-item"><svg class="m-ic"><use href="#ic-target"/></svg> Sponsored Products</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-brand"/></svg> Sponsored Brands</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-display"/></svg> Sponsored Display</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-bulk"/></svg> Bulk Operations</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-bid"/></svg> Bid Optimization</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-search"/></svg> Search-Term Harvesting</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-pin"/></svg> Placement Multipliers</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-audience"/></svg> Audience Modifiers</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-negative"/></svg> Negative Mining</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-tacos"/></svg> TACOS Control</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-catalog"/></svg> Catalog Intelligence</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-dsp"/></svg> Amazon DSP</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-target"/></svg> Sponsored Products</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-brand"/></svg> Sponsored Brands</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-display"/></svg> Sponsored Display</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-bulk"/></svg> Bulk Operations</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-bid"/></svg> Bid Optimization</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-search"/></svg> Search-Term Harvesting</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-pin"/></svg> Placement Multipliers</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-audience"/></svg> Audience Modifiers</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-negative"/></svg> Negative Mining</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-tacos"/></svg> TACOS Control</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-catalog"/></svg> Catalog Intelligence</span><span class="m-sep">◆</span>
+        <span class="m-item"><svg class="m-ic"><use href="#ic-dsp"/></svg> Amazon DSP</span><span class="m-sep">◆</span>
+      </div>
+    </div>
+
+    <!-- METHOD -->
+    <section class="section wrap" id="method">
+      <div class="section-head">
+        <span class="eyebrow reveal-right">The Method</span>
+        <h2 class="reveal" style="margin-top:18px">Five moves, run on <span class="hl">rules</span> — not hunches.</h2>
+        <p class="reveal">Every account gets the same disciplined loop. Nothing changes on a feeling; it changes on data and a documented rule.</p>
+      </div>
+      <div class="method-tabs reveal">
+        <button class="mtab active" data-k="audit"><svg class="mt-ic"><use href="#ic-catalog"/></svg><span class="mlabel">/audit</span></button>
+        <button class="mtab" data-k="research"><svg class="mt-ic"><use href="#ic-search"/></svg><span class="mlabel">/research</span></button>
+        <button class="mtab" data-k="bids"><svg class="mt-ic"><use href="#ic-bid"/></svg><span class="mlabel">/bids</span></button>
+        <button class="mtab" data-k="harvest"><svg class="mt-ic"><use href="#ic-target"/></svg><span class="mlabel">/harvest</span></button>
+        <button class="mtab" data-k="scale"><svg class="mt-ic"><use href="#ic-tacos"/></svg><span class="mlabel">/scale</span></button>
+      </div>
+      <div class="method-panel reveal">
+        <div class="mp-bar">
+          <span class="mp-cmd" id="mpCmd">~/ppc <span style="color:var(--brand)">/audit</span></span>
+          <button class="mp-copy" id="mpCopy" type="button">Copy</button>
+        </div>
+        <div class="mp-body" id="mpBody">
+          <span class="mp-tag" id="mpTag">structure</span>
+          <h3 id="mpTitle">Audit &amp; restructure</h3>
+          <p id="mpDesc">Strip the account to a clean structure — single-purpose campaigns, tight ad groups, no overlap I can't measure. You can't optimize what you can't read.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="section wrap" id="capabilities">
+      <div class="section-head">
+        <span class="eyebrow reveal-right">Capabilities</span>
+        <h2 class="reveal" style="margin-top:18px">The <span class="hl">levers</span> I actually pull on an account.</h2>
+        <p class="reveal">Pick the work, or stack a few.</p>
+      </div>
+      <div class="cap-slider reveal">
+        <button class="cap-nav cap-prev" type="button" aria-label="Previous capability">‹</button>
+        <div class="cap-stage" id="capStage">
+          <article class="cap-card">
+            <span class="cap-ico"><svg><use href="#ic-catalog"/></svg></span>
+            <h3>Campaign architecture</h3>
+            <ul class="cap-list">
+              <li>Full restructures across SP, SB &amp; SD</li>
+              <li>Clean naming, single-purpose campaigns</li>
+              <li>Segmentation traceable to intent &amp; match type</li>
+            </ul>
+          </article>
+          <article class="cap-card">
+            <span class="cap-ico"><svg><use href="#ic-bid"/></svg></span>
+            <h3>Bid automation</h3>
+            <ul class="cap-list">
+              <li>Rule-based bids from target ACOS &amp; conversion rate</li>
+              <li>Placement-aware adjustments</li>
+              <li>Pushed back as bulk uploads, not guesswork</li>
+            </ul>
+          </article>
+          <article class="cap-card">
+            <span class="cap-ico"><svg><use href="#ic-search"/></svg></span>
+            <h3>Search-term cleanup</h3>
+            <ul class="cap-list">
+              <li>Monthly negative mining</li>
+              <li>Harvest winners into exact match</li>
+              <li>Per-product rules so waste never compounds</li>
+            </ul>
+          </article>
+          <article class="cap-card">
+            <span class="cap-ico"><svg><use href="#ic-audience"/></svg></span>
+            <h3>Placement &amp; audience tuning</h3>
+            <ul class="cap-list">
+              <li>Top-of-search, product-page &amp; rest-of-search multipliers</li>
+              <li>Tuned to where conversions actually happen</li>
+              <li>Audience modifiers for Sponsored Display</li>
+            </ul>
+          </article>
+          <article class="cap-card">
+            <span class="cap-ico"><svg><use href="#ic-tacos"/></svg></span>
+            <h3>TACOS reporting &amp; catalog intelligence</h3>
+            <ul class="cap-list">
+              <li>Ad spend tied to total sales, not vanity ACOS</li>
+              <li>Competitor &amp; PDP data pulled from the catalog</li>
+              <li>Targeting grounded in the real listing &amp; market</li>
+            </ul>
+          </article>
+        </div>
+        <button class="cap-nav cap-next" type="button" aria-label="Next capability">›</button>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="section wrap" id="results">
+      <div class="section-head">
+        <span class="eyebrow reveal-right">Results</span>
+        <h2 class="reveal" style="margin-top:18px"><span class="hl">Profitable</span> scale, not vanity clicks.</h2>
+        <p class="reveal">A few accounts where the work showed up on the bottom line. Numbers are rounded — the full breakdowns are yours on request.</p>
+      </div>
+      <div class="results">
+        <div class="result reveal">
+          <div class="result__cat">Supplements</div>
+          <div class="result__metric">41% <span class="arrow">→</span> 27%</div>
+          <div class="result__label">ACOS cut in 90 days</div>
+          <p>Restructured a sprawling auto-only account into intent-segmented campaigns, then automated the bidding.</p>
+          <div class="result__row"><div><div class="mono up" style="color:var(--accent2)">+52%</div><div class="l">sales</div></div><div><div class="mono">90d</div><div class="l">timeline</div></div></div>
+        </div>
+        <div class="result reveal">
+          <div class="result__cat">Home &amp; Kitchen</div>
+          <div class="result__metric">18% <span class="arrow">→</span> 11%</div>
+          <div class="result__label">TACOS while scaling budget 3×</div>
+          <p>Defended the hero ASIN against competitor targeting while opening profitable new placements.</p>
+          <div class="result__row"><div><div class="mono" style="color:var(--accent2)">3×</div><div class="l">budget</div></div><div><div class="mono">profitable</div><div class="l">throughout</div></div></div>
+        </div>
+        <div class="result reveal">
+          <div class="result__cat">Apparel</div>
+          <div class="result__metric"><span class="arrow">−</span>38%</div>
+          <div class="result__label">Wasted spend removed</div>
+          <p>Aggressive negative mining and harvesting across a 600-ASIN catalog, run monthly on documented rules.</p>
+          <div class="result__row"><div><div class="mono">600</div><div class="l">ASINs</div></div><div><div class="mono">monthly</div><div class="l">cadence</div></div></div>
+        </div>
+        <div class="result reveal">
+          <div class="result__cat">Toys &amp; Games</div>
+          <div class="result__metric">2.1× <span class="arrow">→</span> 3.4×</div>
+          <div class="result__label">ROAS lifted for peak season</div>
+          <p>Ramped a Q4 push — broad discovery early, exact-match harvesting before the rush, dayparted bids through peak.</p>
+          <div class="result__row"><div><div class="mono" style="color:var(--accent2)">+63%</div><div class="l">orders</div></div><div><div class="mono">Q4</div><div class="l">peak</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLKIT -->
+    <section class="section wrap" id="toolkit">
+      <div class="section-head">
+        <span class="eyebrow reveal-right">The Toolkit</span>
+        <h2 class="reveal" style="margin-top:18px">Automation that runs the <span class="hl">busywork</span>, so you don't.</h2>
+        <p class="reveal">Reports go in, an optimization engine does the math, an upload-ready bulk file comes out. The judgment stays human; the grind doesn't.</p>
+      </div>
+      <div class="pipe">
+        <div class="pipe__flow reveal">
+          <div class="node"><div class="node__viz viz-input"><i></i><i></i><i></i></div><div class="mono">Input</div><h3>Amazon reports</h3></div>
+          <div class="arrowline"><span>→</span></div>
+          <div class="node node--engine"><div class="node__viz viz-engine"><i></i><i></i><i></i><i></i></div><div class="mono">Engine</div><h3>Optimization stack</h3><p>bids · placements · harvest · negatives</p></div>
+          <div class="arrowline"><span>→</span></div>
+          <div class="node"><div class="node__viz viz-output"><i></i><i></i><i></i><i></i></div><div class="mono">Output</div><h3>Bulk upload file</h3></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PINNED TOOL RAIL -->
+    <section class="rail" id="rail">
+      <div class="rail__sticky">
+        <div class="rail__head">
+          <span class="mono">The Toolkit · in action</span>
+          <div class="rail__dots"><b class="on"></b><b></b><b></b><b></b><b></b></div>
+        </div>
+        <div class="rail__track">
+          <div class="tslide"><article class="tpanel">
+            <div class="tpanel__text">
+              <div class="tpanel__num">01 / Bid Optimizer</div>
+              <h3>Bids set by data, not the suggested box.</h3>
+              <p>Reads the Targeting, Placement, and Audience reports plus your bulk file, then writes back optimized bids and multipliers tuned to target ACOS.</p>
+              <span class="tpanel__stat">reports → optimized bulk file</span>
+            </div>
+            <div class="tpanel__viz viz-bid"><img class="tpanel__shot" loading="lazy" src="assets/toolkit/bid-optimizer.png" alt="Bid Optimizer preview" onerror="this.remove()" /><span class="target"></span><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </article></div>
+          <div class="tslide"><article class="tpanel">
+            <div class="tpanel__text">
+              <div class="tpanel__num">02 / Search-Term Cleanup</div>
+              <h3>Winners harvested, wasters negated.</h3>
+              <p>Monthly negatives and harvests applied against each product's own rule set — so wasted spend never compounds and converting terms get promoted.</p>
+              <span class="tpanel__stat">monthly · per-product rules</span>
+            </div>
+            <div class="tpanel__viz viz-clean"><img class="tpanel__shot" loading="lazy" src="assets/toolkit/search-term-cleanup.png" alt="Search-Term Cleanup preview" onerror="this.remove()" /><i></i><i></i><i></i><i></i><i></i></div>
+          </article></div>
+          <div class="tslide"><article class="tpanel">
+            <div class="tpanel__text">
+              <div class="tpanel__num">03 / Keyword Relevancy Checker</div>
+              <h3>Irrelevant spend, caught before it runs.</h3>
+              <p>Scores every target against the listing so off-intent keywords get flagged and cut before they ever burn budget.</p>
+              <span class="tpanel__stat">scored against the listing</span>
+            </div>
+            <div class="tpanel__viz viz-rel"><img class="tpanel__shot" loading="lazy" src="assets/toolkit/keyword-relevancy-checker.png" alt="Keyword Relevancy Checker preview" onerror="this.remove()" /><i></i><i></i><i></i><i></i><i></i></div>
+          </article></div>
+          <div class="tslide"><article class="tpanel">
+            <div class="tpanel__text">
+              <div class="tpanel__num">04 / Catalog &amp; PDP Grabber</div>
+              <h3>Targeting grounded in the real market.</h3>
+              <p>Pulls competitor and product-page data straight from the catalog, so targeting reflects what the listing and the market actually show.</p>
+              <span class="tpanel__stat">competitor + PDP intel</span>
+            </div>
+            <div class="tpanel__viz viz-grab"><img class="tpanel__shot" loading="lazy" src="assets/toolkit/catalog-pdp-grabber.png" alt="Catalog & PDP Grabber preview" onerror="this.remove()" /><span class="scan"></span><div class="grid"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
+          </article></div>
+          <div class="tslide"><article class="tpanel">
+            <div class="tpanel__text">
+              <div class="tpanel__num">05 / Campaign Bulk Builder</div>
+              <h3>A full campaign, built in one pass.</h3>
+              <p>Generates ready-to-upload campaign bulk files — structured ad groups, keywords, and starting bids — so launches take minutes, not afternoons.</p>
+              <span class="tpanel__stat">one upload-ready file</span>
+            </div>
+            <div class="tpanel__viz viz-build"><img class="tpanel__shot" loading="lazy" src="assets/toolkit/campaign-bulk-builder.png" alt="Campaign Bulk Builder preview" onerror="this.remove()" /><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </article></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK / TOOLS USED -->
+    <section class="section wrap" id="stack" style="padding-bottom: clamp(28px, 3.5vw, 48px)">
+      <div class="section-head">
+        <span class="eyebrow reveal-right">Tools</span>
+        <h2 class="reveal" style="margin-top:18px"><span class="hl">Tools</span> I've worked with.</h2>
+        <p class="reveal">The third-party software I run alongside my own stack — research, automation, and account management.</p>
+      </div>
+      <div class="stack-marquee reveal" aria-label="Tools I've worked with">
+        <div class="stack-track">
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/clickup.png" alt="ClickUp" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>CU</span>'" /></span><span class="stack-name">ClickUp</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/helium10.png" alt="Helium 10" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>H10</span>'" /></span><span class="stack-name">Helium 10</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/datadive.png" alt="DataDive" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>DD</span>'" /></span><span class="stack-name">DataDive</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/datarova.png" alt="Data Rova" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>DR</span>'" /></span><span class="stack-name">Data Rova</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/hector.png" alt="Hector" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>HC</span>'" /></span><span class="stack-name">Hector</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/googlesuite.png" alt="Google Suite" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>G</span>'" /></span><span class="stack-name">Google Suite</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/keepa.png" alt="Keepa" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>KP</span>'" /></span><span class="stack-name">Keepa</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/claudecode.png" alt="Claude Code" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>CC</span>'" /></span><span class="stack-name">Claude Code</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/clickup.png" alt="ClickUp" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>CU</span>'" /></span><span class="stack-name">ClickUp</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/helium10.png" alt="Helium 10" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>H10</span>'" /></span><span class="stack-name">Helium 10</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/datadive.png" alt="DataDive" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>DD</span>'" /></span><span class="stack-name">DataDive</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/datarova.png" alt="Data Rova" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>DR</span>'" /></span><span class="stack-name">Data Rova</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/hector.png" alt="Hector" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>HC</span>'" /></span><span class="stack-name">Hector</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/googlesuite.png" alt="Google Suite" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>G</span>'" /></span><span class="stack-name">Google Suite</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/keepa.png" alt="Keepa" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>KP</span>'" /></span><span class="stack-name">Keepa</span></div><span class="stack-div"></span>
+          <div class="stack-item"><span class="stack-ico"><img src="assets/tools/claudecode.png" alt="Claude Code" onerror="this.outerHTML='<span class=&quot;stack-mono&quot;>CC</span>'" /></span><span class="stack-name">Claude Code</span></div><span class="stack-div"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAININGS -->
+    <section class="section wrap" id="trainings" style="padding-top: clamp(56px, 7vw, 96px)">
+      <div class="section-head">
+        <span class="eyebrow reveal-right">Credentials</span>
+        <h2 class="reveal" style="margin-top:18px"><span class="hl">Trainings</span> I've attended.</h2>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card reveal"><div class="cat-thumb"><span class="cat-logo"><img src="assets/trainings/MAG_circle.png" alt="My Amazon Guy" onerror="this.outerHTML='<span class=&quot;cat-fallback&quot;>MAG</span>'" /></span></div><div class="cat-meta"><div class="cat-name">My Amazon Guy</div><div class="cat-tags">Amazon PPC · Mentorship</div></div></div>
+        <div class="cat-card reveal"><div class="cat-thumb"><span class="cat-logo"><img src="assets/trainings/Sophie%20Society.jpg" alt="Sophie Society" onerror="this.outerHTML='<span class=&quot;cat-fallback&quot;>SS</span>'" /></span></div><div class="cat-meta"><div class="cat-name">Sophie Society PPC Challenge</div><div class="cat-tags">Sponsored Ads · Challenge</div></div></div>
+        <div class="cat-card reveal"><div class="cat-thumb"><span class="cat-logo"><img src="assets/trainings/Seller%20Systems.png" alt="Seller Systems" onerror="this.outerHTML='<span class=&quot;cat-fallback&quot;>SY</span>'" /></span></div><div class="cat-meta"><div class="cat-name">Seller Systems</div><div class="cat-tags">Account Systems · Course</div></div></div>
+        <div class="cat-card reveal"><div class="cat-thumb"><span class="cat-logo"><img src="assets/trainings/PPC%20Mastery%20Summit.png" alt="PPC Mastery Summit" onerror="this.outerHTML='<span class=&quot;cat-fallback&quot;>PM</span>'" /></span></div><div class="cat-meta"><div class="cat-name">PPC Mastery Summit</div><div class="cat-tags">Advanced PPC · Summit</div></div></div>
+        <div class="cat-card reveal"><div class="cat-thumb"><span class="cat-logo"><img src="assets/trainings/Seller%20Fest.png" alt="Seller Fest" onerror="this.outerHTML='<span class=&quot;cat-fallback&quot;>SF</span>'" /></span></div><div class="cat-meta"><div class="cat-name">Seller Fest</div><div class="cat-tags">Industry Event · Summit</div></div></div>
+        <div class="cat-card reveal"><div class="cat-thumb"><span class="cat-logo"><img src="assets/trainings/7-figure%20seller.jpg" alt="7-Figure Seller Summit" onerror="this.outerHTML='<span class=&quot;cat-fallback&quot;>7F</span>'" /></span></div><div class="cat-meta"><div class="cat-name">7-Figure Seller Summit</div><div class="cat-tags">Scaling · Summit</div></div></div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES HANDLED -->
+    <section class="section wrap" id="categories">
+      <div class="section-head">
+        <span class="eyebrow reveal-right">Experience</span>
+        <h2 class="reveal" style="margin-top:18px"><span class="hl">Categories</span> I've handled.</h2>
+        <p class="reveal">The Amazon spaces I've run ad spend in — each with its own buyers, seasonality, and margin math.</p>
+      </div>
+    </section>
+
+    <!-- PINNED CATEGORY SHOWCASE -->
+    <section class="rail" id="crail">
+      <div class="rail__sticky">
+        <div class="rail__head">
+          <span class="mono">Categories · in focus</span>
+          <div class="rail__dots"><b class="on"></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+        </div>
+        <div class="rail__track">
+          <div class="tslide"><article class="cpanel"><img loading="lazy" src="assets/Categories%20handled/Supplements.png" alt="Supplements &amp; Vitamins" onerror="this.remove()"><div class="cpanel__cap"><div class="cpanel__num">01</div><h3>Supplements &amp; Vitamins</h3><div class="cpanel__tags">Health · SP / SB / SD</div></div></article></div>
+          <div class="tslide"><article class="cpanel"><img loading="lazy" src="assets/Categories%20handled/Home%20%26%20Kitchen.png" alt="Home &amp; Kitchen" onerror="this.remove()"><div class="cpanel__cap"><div class="cpanel__num">02</div><h3>Home &amp; Kitchen</h3><div class="cpanel__tags">Housewares · SP / SB</div></div></article></div>
+          <div class="tslide"><article class="cpanel"><img loading="lazy" src="assets/Categories%20handled/Apparel%20and%20Accessories.png" alt="Apparel &amp; Accessories" onerror="this.remove()"><div class="cpanel__cap"><div class="cpanel__num">03</div><h3>Apparel &amp; Accessories</h3><div class="cpanel__tags">Fashion · SP / SB</div></div></article></div>
+          <div class="tslide"><article class="cpanel"><img loading="lazy" src="assets/Categories%20handled/Toys%20%26%20Games.png" alt="Toys &amp; Games" onerror="this.remove()"><div class="cpanel__cap"><div class="cpanel__num">04</div><h3>Toys &amp; Games</h3><div class="cpanel__tags">Seasonal · SP / SD</div></div></article></div>
+          <div class="tslide"><article class="cpanel"><img loading="lazy" src="assets/Categories%20handled/Beauty%20%26%20Personal%20Care.png" alt="Beauty &amp; Personal Care" onerror="this.remove()"><div class="cpanel__cap"><div class="cpanel__num">05</div><h3>Beauty &amp; Personal Care</h3><div class="cpanel__tags">Beauty · SP / SB</div></div></article></div>
+          <div class="tslide"><article class="cpanel"><img loading="lazy" src="assets/Categories%20handled/Pet%20Supplies.png" alt="Pet Supplies" onerror="this.remove()"><div class="cpanel__cap"><div class="cpanel__num">06</div><h3>Pet Supplies</h3><div class="cpanel__tags">Pet · SP / SD</div></div></article></div>
+          <div class="tslide"><article class="cpanel"><img loading="lazy" src="assets/Categories%20handled/Sports%20Equipment.png" alt="Sports Equipment" onerror="this.remove()"><div class="cpanel__cap"><div class="cpanel__num">07</div><h3>Sports Equipment</h3><div class="cpanel__tags">Sporting Goods · SP / SD</div></div></article></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section wrap contact" id="contact">
+      <div class="shell reveal">
+        <div class="core">
+          <span class="eyebrow reveal-right">Contact</span>
+          <h2 style="margin-top:18px">Let's talk about your ad spend.</h2>
+          <p>Send me the account (or just the numbers that are bothering you) and I'll tell you where the waste is and what I'd do first.</p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="mailto:hello@example.com"><span class="sand-text">Email me</span> <span class="btn__ico">↗</span></a>
+            <a class="btn btn--ghost" href="#top"><span class="sand-text">Back to top</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="nav__brand"><span class="wm">Workwid<span style="color:var(--brand)">Kirk</span></span></div>
+      <div class="muted">© <span id="yr"></span> [Your Name] · Amazon PPC Strategist</div>
+      <div class="flinks">
+        <a href="#">LinkedIn</a><a href="#">Email</a><a href="#">Resume</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Login gate — Amazon-styled intro; any sign-in or skip enters the portfolio (shows every visit)
+    const gate = document.getElementById('login-gate');
+    if (gate) {
+      document.body.style.overflow = 'hidden';
+      const enter = () => {
+        gate.classList.add('hide');
+        document.body.style.overflow = '';
+        setTimeout(() => gate.remove(), 800);
+      };
+      document.getElementById('lgForm').addEventListener('submit', e => { e.preventDefault(); enter(); });
+    }
+
+    // Nav scroll state
+    const nav = document.getElementById('nav');
+    addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 24), { passive: true });
+
+    // Mobile menu
+    const burger = document.getElementById('burger');
+    burger.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    nav.querySelectorAll('.nav__links a').forEach(a =>
+      a.addEventListener('click', () => { nav.classList.remove('open'); burger.setAttribute('aria-expanded', false); }));
+
+    // Scroll reveals
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.target.classList.contains('reveal-right')) {
+          e.target.classList.toggle('in', e.isIntersecting);          // re-animate on every scroll-in
+        } else if (e.isIntersecting) {
+          e.target.classList.add('in'); io.unobserve(e.target);       // fade-ups fire once
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -14% 0px' });
+    document.querySelectorAll('.reveal, .reveal-right').forEach((el, i) => {
+      el.style.transitionDelay = (i % 4 * 60) + 'ms';
+      io.observe(el);
+    });
+
+    // Method command palette — tile selector swaps the panel
+    const STEPS = {
+      audit: { cmd: '/audit', tag: 'structure', title: 'Audit & restructure', desc: "Strip the account to a clean structure — single-purpose campaigns, tight ad groups, no overlap I can't measure. You can't optimize what you can't read." },
+      research: { cmd: '/research', tag: 'relevancy', title: 'Keyword & targeting research', desc: 'Mine the catalog and search-term reports for real intent. Relevant targets in, irrelevant spend out — scored, not guessed.' },
+      bids: { cmd: '/bids', tag: 'bids', title: 'Bid & placement tuning', desc: 'Bids set from target ACOS and conversion data, never the suggested-bid box. Placement and audience multipliers carry the rest.' },
+      harvest: { cmd: '/harvest', tag: 'harvest', title: 'Search-term harvesting', desc: 'Winners get promoted to exact match. Wasters get negated. Monthly, against per-product rules — applied through a bulk file, not by hand.' },
+      scale: { cmd: '/scale', tag: 'scale', title: 'Scale & defend', desc: 'Push budget where it converts, defend the listings competitors target, and watch TACOS — not just ACOS — so growth stays profitable.' }
+    };
+    const mtabs = document.querySelectorAll('.mtab');
+    const mpBody = document.getElementById('mpBody');
+    if (mtabs.length && mpBody) {
+      const mpCmd = document.getElementById('mpCmd'), mpTag = document.getElementById('mpTag'), mpTitle = document.getElementById('mpTitle'), mpDesc = document.getElementById('mpDesc'), mpCopy = document.getElementById('mpCopy');
+      function selectStep(k) {
+        const s = STEPS[k]; if (!s) return;
+        mtabs.forEach(t => t.classList.toggle('active', t.dataset.k === k));
+        const ai = document.querySelector('.mtab.active .mt-ic');
+        if (ai && ai.animate && !reduceMotion) {                       // WAAPI re-fires reliably every click
+          ai.animate([
+            { transform: 'scale(1) rotate(0deg)' },
+            { transform: 'scale(1.35) rotate(-12deg)', offset: .4 },
+            { transform: 'scale(.92) rotate(5deg)', offset: .7 },
+            { transform: 'scale(1) rotate(0deg)' }
+          ], { duration: 500, easing: 'cubic-bezier(.34,1.56,.64,1)' });
+        }
+        mpCmd.innerHTML = '~/ppc <span style="color:var(--brand)">' + s.cmd + '</span>';
+        mpTag.textContent = s.tag; mpTitle.textContent = s.title; mpDesc.textContent = s.desc;
+        mpBody.classList.remove('swap'); void mpBody.offsetWidth; mpBody.classList.add('swap');
+      }
+      mtabs.forEach(t => t.addEventListener('click', () => selectStep(t.dataset.k)));
+      mpCopy.addEventListener('click', () => {
+        const k = document.querySelector('.mtab.active').dataset.k, s = STEPS[k];
+        if (navigator.clipboard) navigator.clipboard.writeText(s.cmd + ' — ' + s.title);
+        mpCopy.textContent = 'Copied'; setTimeout(() => mpCopy.textContent = 'Copy', 1200);
+      });
+    }
+
+    // Capabilities fanned slider — arrows + click a side card to re-center
+    const capStage = document.getElementById('capStage');
+    if (capStage) {
+      const cards = [...capStage.querySelectorAll('.cap-card')];
+      const n = cards.length;
+      let active = 0;
+      function capLayout() {
+        const mobile = innerWidth <= 760;
+        const spread = Math.min(330, capStage.clientWidth * 0.44);
+        cards.forEach((card, i) => {
+          let d = i - active;
+          if (d > n / 2) d -= n;
+          if (d < -n / 2) d += n;
+          const ad = Math.abs(d);
+          card.classList.toggle('is-active', d === 0);
+          if (mobile) {
+            card.style.opacity = d === 0 ? '1' : '0';
+            card.style.transform = `translate(-50%, -50%) scale(${d === 0 ? 1 : .9})`;
+            card.style.zIndex = d === 0 ? 5 : 0;
+            card.style.pointerEvents = d === 0 ? 'auto' : 'none';
+          } else {
+            const scale = ad === 0 ? 1 : ad === 1 ? .82 : .66;
+            const rot = d === 0 ? 0 : (d < 0 ? 18 : -18);
+            const op = ad === 0 ? 1 : ad === 1 ? .42 : .14;
+            card.style.opacity = ad > 2 ? '0' : op;
+            card.style.transform = `translate(-50%, -50%) translateX(${d * spread}px) scale(${scale}) rotateY(${rot}deg)`;
+            card.style.zIndex = 5 - ad;
+            card.style.pointerEvents = ad > 2 ? 'none' : 'auto';
+          }
+        });
+      }
+      const capGo = dir => { active = (active + dir + n) % n; capLayout(); };
+      const slider = capStage.parentElement;
+      let capTimer;
+      const capAuto = () => { clearInterval(capTimer); if (!reduceMotion) capTimer = setInterval(() => capGo(1), 3800); };
+      slider.querySelector('.cap-prev').addEventListener('click', () => { capGo(-1); capAuto(); });
+      slider.querySelector('.cap-next').addEventListener('click', () => { capGo(1); capAuto(); });
+      cards.forEach((card, i) => card.addEventListener('click', () => { if (i !== active) { active = i; capLayout(); capAuto(); } }));
+      slider.addEventListener('mouseenter', () => clearInterval(capTimer));
+      slider.addEventListener('mouseleave', capAuto);
+      addEventListener('resize', capLayout);
+      capLayout();
+      capAuto();
+    }
+
+    // Sand trail on button hover — particles shed from the cursor's position; text stays intact
+    function makeSandy(btn) {
+      const pad = 26, dpr = Math.min(devicePixelRatio || 1, 2);
+      let canvas, ctx, parts = [], hovering = false, cw, ch, color = '#fff';
+      function ensure() {
+        const w = btn.offsetWidth, h = btn.offsetHeight;
+        cw = w + pad * 2; ch = h + pad * 2;
+        canvas = document.createElement('canvas');
+        canvas.className = 'sand-canvas';
+        canvas.width = cw * dpr; canvas.height = ch * dpr;
+        canvas.style.width = cw + 'px'; canvas.style.height = ch + 'px';
+        canvas.style.left = -pad + 'px'; canvas.style.top = -pad + 'px';
+        btn.appendChild(canvas);
+        ctx = canvas.getContext('2d'); ctx.scale(dpr, dpr);
+        color = '#EDEFF5';   // bright fragments, pop against dark like the reference
+      }
+      function loop() {
+        ctx.clearRect(0, 0, cw, ch);
+        for (let i = parts.length - 1; i >= 0; i--) {
+          const p = parts[i];
+          p.x += p.vx; p.y += p.vy; p.vy += 0.025; p.vx *= 0.985; p.a -= 0.018;
+          if (p.a <= 0) { parts.splice(i, 1); continue; }
+          ctx.globalAlpha = p.a; ctx.fillStyle = color; ctx.font = p.s + 'px "Geist Mono", monospace'; ctx.fillText(p.ch, p.x, p.y);
+        }
+        ctx.globalAlpha = 1;
+        if (parts.length || hovering) { requestAnimationFrame(loop); }
+        else { canvas.remove(); canvas = null; }
+      }
+      btn.addEventListener('pointerenter', () => { hovering = true; if (!canvas) { ensure(); requestAnimationFrame(loop); } });
+      btn.addEventListener('pointerleave', () => { hovering = false; });
+      btn.addEventListener('pointermove', e => {
+        if (!canvas) return;
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - r.left + pad, y = e.clientY - r.top + pad;
+        const chars = "0123456789%$";
+        for (let i = 0; i < 28; i++) {
+          const ang = Math.random() * Math.PI * 2, sp = Math.pow(Math.random(), 2) * 3.2;  // dense slow core + occasional fast spray
+          parts.push({
+            x: x + (Math.random() - .5) * 14, y: y + (Math.random() - .5) * 14,
+            vx: Math.cos(ang) * sp + (Math.random() - .3) * 1.2,
+            vy: Math.sin(ang) * sp - 0.3,
+            a: Math.random() * .35 + .65,
+            s: Math.random() * 6 + 6,
+            ch: chars[Math.floor(Math.random() * chars.length)]
+          });
+        }
+        if (parts.length > 1100) parts.splice(0, parts.length - 1100);
+      });
+    }
+    if (!reduceMotion) document.querySelectorAll('.btn').forEach(makeSandy);
+
+    // 3D tilt on result cards — leans toward the cursor, keeps content readable
+    if (!reduceMotion) {
+      document.querySelectorAll('.result').forEach(card => {
+        card.addEventListener('pointerenter', () => { card.style.transition = 'transform 0s, border-color .3s var(--ease), box-shadow .3s var(--ease)'; });
+        card.addEventListener('pointermove', e => {
+          const r = card.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - .5;
+          const py = (e.clientY - r.top) / r.height - .5;
+          card.style.transform = `perspective(900px) rotateY(${px * 11}deg) rotateX(${-py * 11}deg) translateY(-6px)`;
+        });
+        card.addEventListener('pointerleave', () => { card.style.transition = ''; card.style.transform = ''; });
+      });
+    }
+
+    // Page-wide flowing-ribbons background — homunculus-style marbled motion (canvas approximation)
+    const heroCanvas = document.querySelector('.page-flow');
+    if (heroCanvas && !reduceMotion) {
+      const ctx = heroCanvas.getContext('2d');
+      const palette = ['#6E79F0', '#34D6B0', '#8B6FE0', '#3FA9C9', '#C9607A', '#5566E0', '#2ECC71'];
+      let w, h, dpr, t = 0;
+      const RIB = 7;
+      function rs() {
+        dpr = Math.min(devicePixelRatio || 1, 2);
+        w = heroCanvas.clientWidth; h = heroCanvas.clientHeight;
+        heroCanvas.width = w * dpr; heroCanvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      function frame() {
+        ctx.clearRect(0, 0, w, h);
+        for (let r = 0; r < RIB; r++) {
+          const baseY = h * (0.14 + 0.7 * (r / (RIB - 1)));
+          const color = palette[r % palette.length];
+          const amp = 34 + r * 13, sp = 0.00022 + r * 0.00003, fq = 0.0015 + r * 0.00018, ph = r * 1.27;
+          for (let s = 0; s < 6; s++) {
+            ctx.beginPath();
+            const off = (s - 2.5) * 3.2;
+            for (let x = 0; x <= w; x += 16) {
+              const y = baseY + off + amp * Math.sin(x * fq + t * sp + ph) + amp * 0.42 * Math.sin(x * fq * 2.3 + t * sp * 0.6 + ph * 1.6);
+              x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            }
+            ctx.strokeStyle = color; ctx.globalAlpha = 0.07; ctx.lineWidth = 1.3; ctx.stroke();
+          }
+        }
+        ctx.globalAlpha = 1; t += 16;
+        requestAnimationFrame(frame);
+      }
+      rs(); addEventListener('resize', rs); frame();
+    }
+
+    // Custom cursor — dot tracks fast, ring trails with spring-like easing (helloshivam feel)
+    const cDot = document.querySelector('.cursor-dot');
+    const cRing = document.querySelector('.cursor-ring');
+    if (cDot && cRing && !reduceMotion && matchMedia('(pointer:fine)').matches) {
+      document.documentElement.classList.add('has-cursor');
+      let tx = innerWidth / 2, ty = innerHeight / 2, rx = tx, ry = ty;
+      addEventListener('pointermove', e => {
+        tx = e.clientX; ty = e.clientY;
+        cDot.style.transform = `translate(${tx}px, ${ty}px) translate(-50%, -50%)`;
+        cDot.style.opacity = '1'; cRing.style.opacity = '1';
+      }, { passive: true });
+      document.addEventListener('mouseleave', () => { cDot.style.opacity = '0'; cRing.style.opacity = '0'; });
+      const hoverSel = 'a, button, .mtab, .mp-copy, .lg__btn, .cap-nav, .cap-card, [role="button"]';
+      addEventListener('pointerover', e => { if (e.target.closest && e.target.closest(hoverSel)) cRing.classList.add('is-hover'); });
+      addEventListener('pointerout', e => { if (e.target.closest && e.target.closest(hoverSel)) cRing.classList.remove('is-hover'); });
+      function cloop() {
+        rx += (tx - rx) * 0.4; ry += (ty - ry) * 0.4;
+        cRing.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+        requestAnimationFrame(cloop);
+      }
+      cloop();
+    }
+
+    // Pinned horizontal tool rail — scroll progress drives sideways translate
+    const rail = document.getElementById('rail');
+    if (rail && matchMedia('(min-width:861px)').matches) {
+      const slides = [...rail.querySelectorAll('.tslide')];
+      const dots = [...rail.querySelectorAll('.rail__dots b')];
+      let ticking = false;
+      function railScroll() {
+        const total = rail.offsetHeight - innerHeight;
+        const p = Math.min(1, Math.max(0, -rail.getBoundingClientRect().top / total));
+        const prog = p * (slides.length - 1);
+        slides.forEach((s, i) => {
+          const d = prog - i, ad = Math.abs(d);
+          const DWELL = 0.42, FADE = 0.2;
+          s.style.opacity = Math.max(0, Math.min(1, 1 - Math.max(0, ad - DWELL) / FADE));
+          s.style.transform = `translateX(${-d * 140}px)`;
+          s.classList.toggle('on', ad < 0.5);
+        });
+        const active = Math.round(prog);
+        dots.forEach((d, i) => d.classList.toggle('on', i === active));
+        ticking = false;
+      }
+      addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(railScroll); } }, { passive: true });
+      addEventListener('resize', railScroll);
+      railScroll();
+    }
+
+    // Pipeline ball-bounce choreography — ball lands on a node, its viz starts, a light traces the border, then it hops on
+    const pipe = document.querySelector('.pipe');
+    const pflow = pipe && pipe.querySelector('.pipe__flow');
+    if (pipe && pflow) {
+      const nodes = [...pflow.querySelectorAll('.node')];
+      nodes.forEach(n => { const t = document.createElement('span'); t.className = 'node__trace'; n.appendChild(t); });
+      const ball = document.createElement('span'); ball.className = 'pipe-ball'; pipe.appendChild(ball);
+      const choreograph = !reduceMotion && matchMedia('(min-width:861px)').matches;
+
+      if (!choreograph) {
+        ball.style.display = 'none';
+        nodes.forEach(n => n.classList.add('is-live'));
+      } else {
+        const BW = 26;
+        ball.style.opacity = '0';
+        const wait = ms => new Promise(r => setTimeout(r, ms));
+        const pos = n => ({ x: n.offsetLeft + n.offsetWidth / 2 - BW / 2, y: n.offsetTop + n.offsetHeight / 2 - BW / 2 });
+        let curX = 0, curY = 0;
+        function moveTo(x, y, dur) {                        // spiral that advances along the straight line
+          const fromX = curX, fromY = curY, N = 36, loops = 3, R = 16;
+          const kf = [];
+          for (let s = 0; s <= N; s++) {
+            const t = s / N;
+            const cx = fromX + (x - fromX) * t;
+            const cy = fromY + (y - fromY) * t;
+            const amp = R * Math.sin(Math.PI * t);          // 0 at ends → enters/lands on center
+            const ang = t * loops * Math.PI * 2;
+            kf.push({ transform: `translate(${cx + Math.cos(ang) * amp}px, ${cy + Math.sin(ang) * amp}px)`, offset: t });
+          }
+          const anim = ball.animate(kf, { duration: dur, easing: 'linear', fill: 'forwards' });
+          curX = x; curY = y;
+          return anim.finished.then(() => { try { anim.commitStyles(); anim.cancel(); } catch (e) {} });
+        }
+        function pop(n) { n.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.045)' }, { transform: 'scale(1)' }], { duration: 420, easing: 'cubic-bezier(.34,1.56,.64,1)' }); }
+        function trace(n) {
+          const t = n.querySelector('.node__trace');
+          t.style.opacity = '1';
+          const a = t.animate([{ '--ta': '0deg' }, { '--ta': '360deg' }], { duration: 2000, easing: 'cubic-bezier(.45,.05,.55,.95)' });
+          return a.finished.then(() => { t.style.opacity = '0'; });
+        }
+        let started = false;
+        async function cycle() {
+          while (true) {
+            nodes.forEach(n => n.classList.remove('is-live'));   // all grey
+            const p0 = pos(nodes[0]);
+            curX = p0.x; curY = p0.y;
+            ball.style.transform = `translate(${curX}px, ${curY}px)`;
+            for (let i = 0; i < nodes.length; i++) {
+              ball.style.opacity = '0.5';                        // faint glowing orb, reappears at the tile it's leaving
+              if (i > 0) { const p = pos(nodes[i]); await moveTo(p.x, p.y, 1100); }
+              else { await wait(220); }                          // brief beat at INPUT
+              ball.style.opacity = '0';                          // touches tile → packet vanishes
+              nodes.forEach((n, j) => n.classList.toggle('is-live', j === i));  // only this tile lit, rest grey
+              pop(nodes[i]);
+              await trace(nodes[i]);
+              await wait(120);
+            }
+            nodes.forEach(n => n.classList.remove('is-live'));   // all grey at end
+            await wait(800);
+          }
+        }
+        const io = new IntersectionObserver(es => {
+          es.forEach(e => { if (e.isIntersecting && !started) { started = true; cycle(); io.disconnect(); } });
+        }, { threshold: .35 });
+        io.observe(pipe);
+      }
+    }
+
+    // Hero stat count-up — re-runs every time the stats scroll into view
+    const heroStats = document.querySelector('.hero__stats');
+    if (heroStats) {
+      const nums = [...heroStats.querySelectorAll('.n[data-to]')];
+      const render = (el, v) => {
+        const dec = +(el.dataset.dec || 0);
+        el.textContent = (el.dataset.prefix || '') + v.toFixed(dec) + (el.dataset.suffix || '');
+      };
+      if (reduceMotion) {
+        nums.forEach(el => render(el, +el.dataset.to));
+      } else {
+        let gen = 0;                                         // bumps each run, cancels stale frames
+        const runCount = () => {
+          const my = ++gen;
+          nums.forEach(el => {
+            const to = +el.dataset.to, dur = 1200, t0 = performance.now();
+            render(el, 0);
+            const step = now => {
+              if (my !== gen) return;                        // a newer run started — bail
+              const p = Math.min(1, (now - t0) / dur);
+              const eased = 1 - Math.pow(1 - p, 3);          // ease-out cubic
+              render(el, to * eased);
+              if (p < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          });
+        };
+        let inView = false;
+        const io = new IntersectionObserver(es => {
+          es.forEach(e => {
+            if (e.isIntersecting && !inView) { inView = true; runCount(); }
+            else if (!e.isIntersecting) { inView = false; }  // reset so the next entry re-counts
+          });
+        }, { threshold: .4 });
+        io.observe(heroStats);
+      }
+    }
+
+    // Categories — pinned full-width showcase (one image per category, crossfades on scroll)
+    const crail = document.getElementById('crail');
+    if (crail && matchMedia('(min-width:861px)').matches) {
+      const cslides = [...crail.querySelectorAll('.tslide')];
+      const cdots = [...crail.querySelectorAll('.rail__dots b')];
+      let cticking = false;
+      function crailScroll() {
+        const total = crail.offsetHeight - innerHeight;
+        const p = Math.min(1, Math.max(0, -crail.getBoundingClientRect().top / total));
+        const prog = p * (cslides.length - 1);
+        cslides.forEach((s, i) => {
+          const d = prog - i, ad = Math.abs(d);
+          const DWELL = 0.4, FADE = 0.22;
+          s.style.opacity = Math.max(0, Math.min(1, 1 - Math.max(0, ad - DWELL) / FADE));
+          s.style.transform = `translateX(${-d * 90}px)`;
+          s.classList.toggle('on', ad < 0.5);
+        });
+        const active = Math.round(prog);
+        cdots.forEach((d, i) => d.classList.toggle('on', i === active));
+        cticking = false;
+      }
+      addEventListener('scroll', () => { if (!cticking) { cticking = true; requestAnimationFrame(crailScroll); } }, { passive: true });
+      addEventListener('resize', crailScroll);
+      crailScroll();
+    }
+
+    // Categories — mouse parallax: image drifts toward cursor, caption opposite (2-plane depth hint)
+    const cpanels = [...document.querySelectorAll('#crail .cpanel')];
+    if (cpanels.length && !reduceMotion && matchMedia('(pointer:fine)').matches) {
+      let mx = 0, my = 0, praf = false;
+      const applyPar = () => {
+        cpanels.forEach(p => {
+          const img = p.querySelector('img');
+          const cap = p.querySelector('.cpanel__cap');
+          if (img) img.style.transform = `scale(1.08) translate(${mx * 16}px, ${my * 12}px)`;
+          if (cap) cap.style.transform = `translate(${mx * -6}px, ${my * -4}px)`;
+        });
+        praf = false;
+      };
+      addEventListener('pointermove', (e) => {
+        mx = (e.clientX / innerWidth - 0.5) * 2;
+        my = (e.clientY / innerHeight - 0.5) * 2;
+        if (!praf) { praf = true; requestAnimationFrame(applyPar); }
+      }, { passive: true });
+    }
+
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

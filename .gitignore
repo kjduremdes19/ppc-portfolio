@@ -1,0 +1,5 @@
+# internal build snapshots and notes — not part of the published site
+iterations/
+vibe-spec.md
+.DS_Store
+Thumbs.db
