@@ -187,7 +187,7 @@
     .hero__sub { color: var(--muted); font-size: clamp(16px, 1.6vw, 19px); max-width: 540px; }
     .hero__cta { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
     @property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
-    .hero__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 44px; }
+    .hero__stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 44px; }
     .hero__stat { position: relative; padding: 20px 18px; border-radius: 18px; border: 1px solid var(--hair); background: linear-gradient(165deg, var(--surface-2), var(--surface)); overflow: hidden; cursor: default; transition: transform .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease); }
     .hero__stat::before { content: ""; position: absolute; left: 0; top: 0; height: 2px; width: 0; background: var(--brand); box-shadow: 0 0 12px var(--brand); transition: width .55s var(--ease); }
     .hero__stat::after { content: ""; position: absolute; inset: 0; background: radial-gradient(280px circle at 50% 0%, rgba(46,204,113,.16), transparent 70%); opacity: 0; transition: opacity .45s var(--ease); pointer-events: none; }
@@ -302,6 +302,23 @@
     .result__row { display: flex; gap: 22px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--hair); }
     .result__row div .mono { font-size: 16px; color: var(--text); }
     .result__row div .l { font-size: 11px; color: var(--faint); }
+
+    /* ---------- Experience timeline ---------- */
+    .timeline { position: relative; display: flex; flex-direction: column; gap: 22px; padding-left: 28px; }
+    .timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 1px; background: linear-gradient(var(--accent), var(--hair)); }
+    .tl-item { position: relative; padding: 22px 24px; border-radius: var(--radius); border: 1px solid var(--hair); background: linear-gradient(165deg, var(--surface-2), var(--surface)); transition: transform .5s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease); }
+    .tl-item:hover { border-color: var(--hair-strong); box-shadow: var(--shadow-card); }
+    .tl-item::before { content: ""; position: absolute; left: -25px; top: 28px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--bg); }
+    .tl-date { font-family: "Geist Mono", monospace; font-size: 12px; letter-spacing: .1em; color: var(--accent); text-transform: uppercase; }
+    .tl-role { font-size: clamp(20px, 2.4vw, 26px); letter-spacing: -.02em; margin: 8px 0 2px; }
+    .tl-co { color: var(--muted); font-size: 14px; }
+    .tl-points { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .tl-points li { position: relative; padding-left: 18px; color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+    .tl-points li::before { content: "→"; position: absolute; left: 0; color: var(--accent2); }
+    .tl-earlier { margin: 2px 0 0; color: var(--faint); font-size: 13px; }
+    .contact__addr { margin-top: 20px; color: var(--muted); font-size: 14px; }
+    .contact__addr a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .3s var(--ease); }
+    .contact__addr a:hover { border-bottom-color: var(--accent2); }
 
     /* ---------- Toolkit / pipeline ---------- */
     .pipe { position: relative; display: grid; grid-template-columns: 1fr; gap: 16px; }
@@ -578,6 +595,7 @@
       <a href="#method">Method</a>
       <a href="#capabilities">Capabilities</a>
       <a href="#results">Results</a>
+      <a href="#experience">Experience</a>
       <a href="#toolkit">Toolkit</a>
       <a href="#stack">Tools</a>
     </div>
@@ -601,7 +619,8 @@
           </div>
           <div class="hero__stats reveal">
             <div class="hero__stat"><span class="border-run" aria-hidden="true"></span><div class="n up" data-to="34" data-prefix="−" data-suffix="%">−34%</div><div class="l">avg. ACOS reduction</div></div>
-            <div class="hero__stat"><span class="border-run" aria-hidden="true"></span><div class="n" data-to="2.4" data-dec="1" data-prefix="$" data-suffix="M">$2.4M</div><div class="l">ad spend managed</div></div>
+            <div class="hero__stat"><span class="border-run" aria-hidden="true"></span><div class="n" data-to="4" data-prefix="$" data-suffix="M+">$4M+</div><div class="l">ad spend managed</div></div>
+            <div class="hero__stat"><span class="border-run" aria-hidden="true"></span><div class="n" data-to="5" data-suffix="+">5+</div><div class="l">yrs Amazon PPC</div></div>
             <div class="hero__stat"><span class="border-run" aria-hidden="true"></span><div class="n" data-to="7">7</div><div class="l">in-house automations built</div></div>
           </div>
         </div>
@@ -786,6 +805,37 @@
       </div>
     </section>
 
+    <!-- EXPERIENCE -->
+    <section class="section wrap" id="experience">
+      <div class="section-head">
+        <span class="eyebrow reveal-right">Experience</span>
+        <h2 class="reveal" style="margin-top:18px">Five years running <span class="hl">Amazon ad accounts</span>.</h2>
+        <p class="reveal">Department-head-level PPC across multiple brands and portfolios.</p>
+      </div>
+      <div class="timeline reveal">
+        <article class="tl-item">
+          <div class="tl-date">Aug 2022 — Oct 2025</div>
+          <h3 class="tl-role">PPC Department Head</h3>
+          <div class="tl-co">Upgraded Us · AZ, USA (remote)</div>
+          <ul class="tl-points">
+            <li>Owned Amazon PPC performance across multiple products and portfolios.</li>
+            <li>Built, optimized, scaled and restructured Sponsored Products, Brands and Display campaigns.</li>
+            <li>Made calls on real profitability — ACoS, ROAS, CPA, contribution margin — not vanity revenue.</li>
+          </ul>
+        </article>
+        <article class="tl-item">
+          <div class="tl-date">Sep 2020 — Jul 2022</div>
+          <h3 class="tl-role">Amazon SEO &amp; PPC Manager</h3>
+          <div class="tl-co">Sun Valley Tek</div>
+          <ul class="tl-points">
+            <li>Ran ongoing Amazon PPC campaign management and optimization.</li>
+            <li>Promoted into the role after leading an inbound customer-support team.</li>
+          </ul>
+        </article>
+        <p class="tl-earlier">Earlier: customer-experience and team-lead roles (2017–2020).</p>
+      </div>
+    </section>
+
     <!-- TOOLKIT -->
     <section class="section wrap" id="toolkit">
       <div class="section-head">
@@ -942,9 +992,10 @@
           <h2 style="margin-top:18px">Let's talk about your ad spend.</h2>
           <p>Send me the account (or just the numbers that are bothering you) and I'll tell you where the waste is and what I'd do first.</p>
           <div class="hero__cta">
-            <a class="btn btn--primary" href="mailto:hello@example.com"><span class="sand-text">Email me</span> <span class="btn__ico">↗</span></a>
+            <a class="btn btn--primary" href="mailto:kirkjabeduremdes26@gmail.com?subject=Amazon%20PPC%20help&body=Hi%20Kirk%2C%0D%0A%0D%0AStore%20%2F%20brand%3A%0D%0AMonthly%20ad%20spend%3A%0D%0ACurrent%20ACOS%3A%0D%0AWhat's%20bugging%20me%3A"><span class="sand-text">Email me</span> <span class="btn__ico">↗</span></a>
             <a class="btn btn--ghost" href="#top"><span class="sand-text">Back to top</span></a>
           </div>
+          <p class="contact__addr">Or copy it: <a href="mailto:kirkjabeduremdes26@gmail.com">kirkjabeduremdes26@gmail.com</a></p>
         </div>
       </div>
     </section>
@@ -955,7 +1006,7 @@
       <div class="nav__brand"><span class="wm">Workwid<span style="color:var(--brand)">Kirk</span></span></div>
       <div class="muted">© <span id="yr"></span> Kirk Jabe Duremdes · Amazon PPC Strategist</div>
       <div class="flinks">
-        <a href="#">LinkedIn</a><a href="#">Email</a><a href="#">Resume</a>
+        <a href="mailto:kirkjabeduremdes26@gmail.com">Email</a>
       </div>
     </div>
   </footer>
