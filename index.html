@@ -1082,7 +1082,16 @@
         mpTag.textContent = s.tag; mpTitle.textContent = s.title; mpDesc.textContent = s.desc;
         mpBody.classList.remove('swap'); void mpBody.offsetWidth; mpBody.classList.add('swap');
       }
-      mtabs.forEach(t => t.addEventListener('click', () => selectStep(t.dataset.k)));
+      const mKeys = [...mtabs].map(t => t.dataset.k);
+      let mIdx = 0, mTimer;
+      const methodAuto = () => { clearInterval(mTimer); if (!reduceMotion) mTimer = setInterval(() => { mIdx = (mIdx + 1) % mKeys.length; selectStep(mKeys[mIdx]); }, 4500); };
+      mtabs.forEach((t, i) => t.addEventListener('click', () => { mIdx = i; selectStep(t.dataset.k); methodAuto(); }));
+      const methodSection = document.getElementById('method');
+      if (methodSection) {
+        methodSection.addEventListener('mouseenter', () => clearInterval(mTimer));
+        methodSection.addEventListener('mouseleave', methodAuto);
+      }
+      methodAuto();
       mpCopy.addEventListener('click', () => {
         const k = document.querySelector('.mtab.active').dataset.k, s = STEPS[k];
         if (navigator.clipboard) navigator.clipboard.writeText(s.cmd + ' — ' + s.title);
